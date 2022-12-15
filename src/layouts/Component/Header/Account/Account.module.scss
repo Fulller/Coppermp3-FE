@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  span {
+    font-size: 12px;
+    color: var(--textcl);
+    margin-right: 12px;
+    opacity: 0.5;
+  }
+  img {
+    border-radius: 50%;
+    width: 50px;
+  }
+}

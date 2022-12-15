@@ -81,7 +81,7 @@ function Login() {
         <h2 ref={messageRef}>Error</h2>
         <button onClick={submitForm}>Log in</button>
         <footer>
-          <Link to={"/signin"}>Sign in</Link>
+          <Link to="/signin">Sign in</Link>
         </footer>
       </div>
       <img

@@ -1,0 +1,97 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  .control {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-around;
+    width: 280px;
+    align-items: center;
+
+    button {
+      height: 30px;
+      width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50px;
+      transition: all 0.5s;
+      padding: 20px;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      span {
+        font-size: 28px;
+      }
+    }
+    .play {
+      width: 50px;
+      height: 50px;
+      span {
+        font-size: 40px;
+        &:hover {
+          color: rgb(126, 126, 241);
+        }
+      }
+    }
+  }
+  .time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    input {
+      width: 400px;
+      transition: all 1s;
+    }
+    span {
+      margin: 0px 12px;
+      width: 40px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      background-color: white;
+      width: 400px;
+      height: 3px;
+      transition: all 0.3s;
+      &:hover {
+        transform: scaleY(2);
+        &::-webkit-slider-thumb {
+          transform: scaleX(2);
+        }
+      }
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 3px;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      transition: all 0.3s;
+      height: 8px;
+      width: 8px;
+      border-radius: 25px;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -2px;
+      background-color: black;
+      border: 1px solid white;
+    }
+    input[type="range"]:focus::-webkit-slider-runnable-track {
+      background-color: white;
+      height: 3px;
+    }
+    input[type="range"]::-moz-range-track {
+      height: 5px;
+      cursor: pointer;
+    }
+    input[type="range"]::-moz-range-thumb {
+      box-shadow: 0px 0px 0px #000000;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 :root {
-  --bgcl: #170f23;
-  --bgsubcl: #130c1c;
+  --bgcl: rgb(23, 15, 35);
+  --bgsubcl: rgb(35, 27, 46);
+  --bdcl: rgba(255, 255, 255, 0.4);
   --textcl: white;
   --textsubcl: rgba(255, 255, 255, 0.6);
   --solidcl: rgb(178, 159, 245);
@@ -14,4 +15,7 @@
   color: var(--textcl);
   background-color: transparent;
   font-family: "Inter", sans-serif;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }

@@ -1,0 +1,24 @@
+.layout {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .upper-part {
+    display: flex;
+    height: calc(100% - 90px);
+
+    .right-part {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      .main-page {
+        flex: 1;
+        background-color: black;
+      }
+    }
+  }
+}

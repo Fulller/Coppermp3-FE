@@ -1,23 +1,18 @@
-import { Route, Routes, Link } from "react-router-dom";
-import { publicRoute } from "./routes";
+import { BrowserRouter } from "react-router-dom";
+import GlobalStyle from "./Component/GlobalStyle";
+import GlobalState from "./Component/GlobalState";
+import RoutePage from "./Component/RoutePage";
 
 function App() {
   return (
     <div className="App">
-      {
-        <Routes>
-          {publicRoute.map((route, index) => {
-            let Page = route.element;
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                element={<Page></Page>}
-              ></Route>
-            );
-          })}
-        </Routes>
-      }
+      <GlobalStyle>
+        <GlobalState>
+          <BrowserRouter>
+            <RoutePage></RoutePage>
+          </BrowserRouter>
+        </GlobalState>
+      </GlobalStyle>
     </div>
   );
 }

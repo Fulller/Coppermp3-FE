@@ -9,20 +9,21 @@ let cx = classNames.bind(style);
 function Home() {
   let [globalState, dispatch] = useContext(GlobalContext);
   let [data, setData] = useState();
-  useEffect(() => {
-    async function fetchData() {
-      let newdata = await services.test();
-      setData(newdata);
-    }
-    fetchData();
-  }, []);
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-  return (
-    <div className="wrapper">
-      <h1 className="haha">HOME PAGE</h1>
-    </div>
-  );
+  // useEffect(() => {
+  //   if (!globalState.isLogin) {
+  //     window.location.href = "/login";
+  //   }
+  // }, [globalState]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     let newdata = await services.test();
+  //     setData(newdata);
+  //   }
+  //   fetchData();
+  // }, []);
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
+  return <div className={cx("wrapper")}></div>;
 }
 export default Home;
