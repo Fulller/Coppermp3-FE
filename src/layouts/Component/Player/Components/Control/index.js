@@ -29,6 +29,7 @@ function Control({ globalState, dispatch }) {
       this.timeCurrentDom = timeCurrentRef.current;
       this.timeEndDom = timeEndRef.current;
       this.isPlaying = false;
+      this.ismouseup = false;
       this.start();
     }
     handleEvent() {
@@ -66,7 +67,7 @@ function Control({ globalState, dispatch }) {
         this.timeCurrentDom.innerText = nomalizeTime(ctime);
         this.timeEndDom.innerText = nomalizeTime(this.songDom.duration);
       }
-      function changeCurrentTime() {
+      function changeCurrentTime(e) {
         this.songDom.currentTime = this.timeInputDom.value;
       }
       this.songDom.onplay = changeComePlay.bind(this);

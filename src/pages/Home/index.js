@@ -8,22 +8,18 @@ import urlMedia from "../../tools/urlMedia";
 let cx = classNames.bind(style);
 function Home() {
   let [globalState, dispatch] = useContext(GlobalContext);
-  let [data, setData] = useState();
-  // useEffect(() => {
-  //   if (!globalState.isLogin) {
-  //     window.location.href = "/login";
-  //   }
-  // }, [globalState]);
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     let newdata = await services.test();
-  //     setData(newdata);
-  //   }
-  //   fetchData();
-  // }, []);
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+  useEffect(() => {
+    if (!globalState.isLogin) {
+      window.location.href = "/login";
+    }
+  }, [globalState]);
+  useEffect(() => {
+    async function fetchData() {
+      let newdata = await services.getChartHome();
+      console.log(newdata);
+    }
+    fetchData();
+  }, []);
   return <div className={cx("wrapper")}></div>;
 }
 export default Home;
