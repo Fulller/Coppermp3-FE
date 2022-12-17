@@ -22,6 +22,7 @@
 
       &:hover {
         background-color: rgba(255, 255, 255, 0.1);
+        transform: scale(1.1);
       }
       span {
         font-size: 28px;
@@ -32,9 +33,6 @@
       height: 50px;
       span {
         font-size: 40px;
-        &:hover {
-          color: rgb(126, 126, 241);
-        }
       }
     }
   }

@@ -5,6 +5,7 @@ import classNames from "classnames/bind";
 import domainbe from "../../tools/domainbe";
 import services from "../../services";
 import { GlobalContext } from "../../Component/GlobalState";
+import LocalStorage from "../../tools/localStorage";
 
 let cx = classNames.bind(style);
 function Login() {
@@ -41,6 +42,11 @@ function Login() {
     setUng(new InputGroup(ungRef, setUng));
     setPwg(new InputGroup(pwgRef, setPwg));
   }, []);
+  useEffect(() => {
+    if (LocalStorage.get("isLogincmp3", false)) {
+      window.location.href = "/discovery";
+    }
+  }, [globalState.isLogin]);
   let listG = [ung, pwg];
   async function submitForm() {
     listG.forEach((group) => {
@@ -57,7 +63,8 @@ function Login() {
       });
       if (dataLogin.isSuccessful) {
         dispatch({ type: "login", payload: { user: dataLogin.user } });
-        window.location.href = "/home";
+        LocalStorage.set("isLogincmp3", true);
+        window.location.href = "/discovery";
       } else {
         messageRef.current.innerText = dataLogin.message;
         messageRef.current.style.opacity = 1;

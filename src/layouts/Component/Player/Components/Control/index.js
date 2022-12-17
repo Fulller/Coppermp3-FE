@@ -2,6 +2,7 @@ import style from "./Control.module.scss";
 import classNames from "classnames/bind";
 import { useState, useRef, useEffect } from "react";
 import urlMedia from "../../../../../tools/urlMedia";
+import LocalStorage from "../../../../../tools/localStorage";
 
 let cx = classNames.bind(style);
 function Control({ globalState, dispatch }) {
@@ -12,6 +13,7 @@ function Control({ globalState, dispatch }) {
   let timeInputRef = useRef();
   let timeCurrentRef = useRef();
   let timeEndRef = useRef();
+  let replayRef = useRef();
   let cs = globalState.currentSong;
   class Song {
     constructor({
@@ -22,14 +24,16 @@ function Control({ globalState, dispatch }) {
       timeInputRef,
       timeCurrentRef,
       timeEndRef,
+      replayRef,
     }) {
       this.songDom = document.getElementById("audio");
       this.playDom = playRef.current;
       this.timeInputDom = timeInputRef.current;
       this.timeCurrentDom = timeCurrentRef.current;
       this.timeEndDom = timeEndRef.current;
+      this.replayDom = replayRef.current;
       this.isPlaying = false;
-      this.ismouseup = false;
+      this.isReplay = LocalStorage.get("isReplaycmp3", false);
       this.start();
     }
     handleEvent() {
@@ -56,16 +60,22 @@ function Control({ globalState, dispatch }) {
         }
       }
       function loadTime() {
-        let ctime = this.songDom.currentTime;
+        let ctime = Math.floor(this.songDom.currentTime);
         function nomalizeTime(time) {
+          if (isNaN(time)) {
+            return "0:00";
+          }
           let minus = Math.floor(time / 60).toString();
           let second = Math.floor(time % 60).toString();
-          return `${minus}:${second.length == 1 ? "0" + second : second}`;
+          return `${minus.length == 1 ? "0" + minus : minus}:${
+            second.length == 1 ? "0" + second : second
+          }`;
         }
         this.timeInputDom.value = ctime;
         this.timeInputDom.max = this.songDom.duration;
         this.timeCurrentDom.innerText = nomalizeTime(ctime);
         this.timeEndDom.innerText = nomalizeTime(this.songDom.duration);
+        LocalStorage.set("timecmp3", ctime);
       }
       function changeCurrentTime(e) {
         this.songDom.currentTime = this.timeInputDom.value;
@@ -78,8 +88,9 @@ function Control({ globalState, dispatch }) {
     }
     init() {
       this.songDom.autoPlay = true;
+      this.songDom.currentTime = LocalStorage.get("timecmp3", 0);
+      this.timeInputDom.value = LocalStorage.get("timecmp3", 0);
       this.timeInputDom.max = this.songDom.duration;
-      this.timeInputDom.value = 0;
     }
     start() {
       this.init();
@@ -97,12 +108,15 @@ function Control({ globalState, dispatch }) {
         timeInputRef,
         timeCurrentRef,
         timeEndRef,
+        replayRef,
       })
     );
     if (Object.keys(song).length != 0) {
-      song.songDom.play();
+      song.songDom.onloadeddata = function () {
+        song.songDom.play();
+      };
     }
-  }, [globalState.current]);
+  }, [globalState.currentSong]);
 
   return (
     <div className={cx("wrapper")}>
@@ -119,7 +133,7 @@ function Control({ globalState, dispatch }) {
         <button ref={nextRef}>
           <span className="material-symbols-outlined">skip_next</span>
         </button>
-        <button>
+        <button ref={replayRef}>
           <span className="material-symbols-outlined">replay</span>
         </button>
       </div>

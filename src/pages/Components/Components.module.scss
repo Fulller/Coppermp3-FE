@@ -1,0 +1,35 @@
+.wrapper {
+  background-color: var(--bgcl);
+  height: calc(100vh - 90px);
+  max-width: 100%;
+  overflow: hidden;
+  padding: 70px 60px 0px 60px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgb(102, 102, 249);
+  }
+  .view-item {
+    margin-top: 48px;
+    max-width: 100%;
+    width: 920px;
+
+    h3 {
+      font-size: 20;
+      margin-bottom: 20px;
+    }
+  }
+}

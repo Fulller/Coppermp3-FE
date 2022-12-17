@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 import domainbe from "../../../tools/domainbe";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../../Component/GlobalState";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 let cx = classNames.bind(style);
 function Sidebar() {
@@ -13,33 +13,34 @@ function Sidebar() {
       icon: <span className="material-symbols-outlined">library_music</span>,
       title: "Cá nhân",
       id: "home",
-      link: "/home",
+      link: "/discovery",
     },
     {
       icon: <span className="material-symbols-outlined">album</span>,
       title: "Khám phá",
       id: "discovery",
-      link: "/home",
+      link: "/discovery",
     },
     {
       icon: <span className="material-symbols-outlined">music_note</span>,
       title: "Nhạc mới",
       id: "newsong",
-      link: "/home",
+      link: "/discovery",
     },
     {
       icon: <span className="material-symbols-outlined">star</span>,
       title: "Top 100",
       id: "top100",
-      link: "/home",
+      link: "/discovery",
     },
     {
       icon: <span className="material-symbols-outlined">movie</span>,
       title: "MV",
       id: "mv",
-      link: "/home",
+      link: "/discovery",
     },
   ];
+
   return (
     <div className={cx("wrapper")}>
       <header>

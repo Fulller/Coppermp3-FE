@@ -1,6 +1,7 @@
 import style from "./Option.module.scss";
 import classNames from "classnames/bind";
 import { useEffect, useRef } from "react";
+import LocalStorage from "../../../../../tools/localStorage";
 
 let cx = classNames.bind(style);
 function Option({ globalState, dispatch }) {
@@ -15,21 +16,21 @@ function Option({ globalState, dispatch }) {
       volumeIconRef.current.innerText = "volume_up";
     }
     songDom.volume = e.target.value / 100;
-    dispatch({ type: "volume", payload: { volume: e.target.value } });
+    LocalStorage.set("volumecmp3", e.target.value * 1);
   }
   function handleOffVolume(e) {
     if (volumeIconRef.current.innerText == "volume_up") {
       songDom.volume = 0;
       volumeIconRef.current.innerText = "volume_off";
     } else {
-      songDom.volume = globalState.volume / 100;
+      songDom.volume = LocalStorage.get("volumecmp3") / 100;
       volumeIconRef.current.innerText = "volume_up";
     }
   }
   useEffect(() => {
     songDom = document.getElementById("audio");
-    volumeRef.current.value = globalState.volume;
-    songDom.volume = globalState.volume / 100;
+    volumeRef.current.value = LocalStorage.get("volumecmp3", 100);
+    songDom.volume = LocalStorage.get("volumecmp3", 100) / 100;
   }, []);
   return (
     <div className={cx("wrapper")}>
