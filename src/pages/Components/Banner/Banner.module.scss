@@ -1,5 +1,6 @@
 .wrapper {
   margin-top: 32px !important;
+  position: relative;
 
   &:hover {
     span {
@@ -23,10 +24,10 @@
     }
   }
   .prev {
-    left: 70px;
+    left: 20px;
   }
   .next {
-    right: 70px;
+    right: 20px;
   }
   .list-banner {
     display: flex;

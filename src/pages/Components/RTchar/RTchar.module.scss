@@ -1,0 +1,73 @@
+.wrapper {
+  padding: 24px 16px;
+  border-radius: 10px;
+  background-image: url("https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.8.9/static/media/bg-chart.fd766403.jpg");
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(rgb(65, 3, 115), rgba(41, 13, 38, 0.8));
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: sticky;
+    h3 {
+      font-size: 30px;
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      .item {
+        padding: 10px;
+        margin-bottom: 10px;
+        align-items: center;
+        width: 50%;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.3);
+        }
+        img {
+          width: 52px;
+          border-radius: 8px;
+          margin: 0px 12px;
+        }
+        span {
+          padding: 0px 12px;
+          font-size: 40px;
+          color: transparent;
+          font-weight: 800;
+          -webkit-text-stroke: 1px rgb(170, 158, 245);
+        }
+        .info {
+          h5 {
+            max-width: 200px;
+            margin-bottom: 8px;
+          }
+          h6 {
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.3);
+          }
+        }
+      }
+    }
+    .right {
+      flex: 1;
+    }
+  }
+}

@@ -2,7 +2,7 @@ import { useState, useRef, useContext, useEffect, memo } from "react";
 import classNames from "classnames/bind";
 import services from "../../services";
 import urlMedia from "../../tools/urlMedia";
-import { Banner, NewRelease } from "../Components";
+import { Banner, NewRelease, Playlist, RTchar } from "../Components";
 import cpnStyle from "../Components/Components.module.scss";
 
 let cxCpn = classNames.bind(cpnStyle);
@@ -24,6 +24,10 @@ function Discovery() {
           }
           case "new-release":
             return <NewRelease data={dataBlock} key={index}></NewRelease>;
+          case "playlist":
+            return <Playlist data={dataBlock} key={index}></Playlist>;
+          case "RTChart":
+            return <RTchar data={dataBlock} key={index}></RTchar>;
         }
       });
     }

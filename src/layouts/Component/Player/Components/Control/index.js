@@ -40,23 +40,23 @@ function Control({ globalState, dispatch }) {
       function changeComePlay() {
         this.isPlaying = true;
         let icon = this.playDom.querySelector("span");
-        icon.innerText = "pause_circle";
+        icon.innerText = "pause";
       }
       function changeComePause() {
         this.isPlaying = false;
         let icon = this.playDom.querySelector("span");
-        icon.innerText = "play_circle";
+        icon.innerText = "play_arrow";
       }
       function handelePlayandPause() {
         let icon = this.playDom.querySelector("span");
         if (this.isPlaying) {
           this.isPlaying = false;
           this.songDom.pause();
-          icon.innerText = "play_circle";
+          icon.innerText = "play_arrow";
         } else {
           this.isPlaying = true;
           this.songDom.play();
-          icon.innerText = "pause_circle";
+          icon.innerText = "pause";
         }
       }
       function loadTime() {
@@ -113,6 +113,7 @@ function Control({ globalState, dispatch }) {
     );
     if (Object.keys(song).length != 0) {
       song.songDom.onloadeddata = function () {
+        song.songDom.currentTime = 0;
         song.songDom.play();
       };
     }
@@ -128,13 +129,13 @@ function Control({ globalState, dispatch }) {
           <span className="material-symbols-outlined">skip_previous</span>
         </button>
         <button ref={playRef} className={cx("play")}>
-          <span className={cx(["material-symbols-outlined"])}>play_circle</span>
+          <span className={cx(["material-symbols-outlined"])}>play_arrow</span>
         </button>
         <button ref={nextRef}>
           <span className="material-symbols-outlined">skip_next</span>
         </button>
         <button ref={replayRef}>
-          <span className="material-symbols-outlined">replay</span>
+          <span className="material-symbols-outlined">autorenew</span>
         </button>
       </div>
       <div className={cx("time")}>

@@ -7,50 +7,34 @@ let GlobalContext = createContext();
 function GlobalState({ children }) {
   let globalInitState = LocalStorage.get("coppermp3", {
     user: {},
-    pageId: "home",
+    pageId: "discovery",
     currentSong: {
-      encodeId: "ZWBWWU6U",
-      title: "Em Có Biết",
-      alias: "Em-Co-Biet-H2K",
-      isOffical: true,
-      username: "",
-      artistsNames: "H2K",
-      artists: [
-        {
-          id: "IW6ZZ0OU",
-          name: "H2K",
-          link: "/nghe-si/H2K",
-          spotlight: false,
-          alias: "H2K",
-          thumbnail:
-            "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/5/f/0/9/5f0920f4417c4625cb4dd1d0440ac286.jpg",
-          thumbnailM:
-            "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/5/f/0/9/5f0920f4417c4625cb4dd1d0440ac286.jpg",
-          isOA: false,
-          isOABrand: false,
-          playlistId: "6UW9BEA9",
-        },
-      ],
-      isWorldWide: true,
+      encodeId: "IWB6IFZ7",
+      title: "See You Again ft. Charlie Puth [320]",
+      alias: "See-You-Again-ft-Charlie-Puth-320-charlie-puth",
+      isOffical: false,
+      username: "sauthuffc",
+      artistsNames: "charlie puth",
+      isWorldWide: false,
       thumbnailM:
-        "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/5/6/f/1/56f1e4f73ad8312394ab419844f6f0bb.jpg",
-      link: "/bai-hat/Em-Co-Biet-H2K/ZWBWWU6U.html",
+        "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/3/2/a/3/32a35f4d26ee56366397c09953f6c269.jpg",
+      link: "/bai-hat/See-You-Again-ft-Charlie-Puth-320-charlie-puth/IWB6IFZ7.html",
       thumbnail:
-        "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/5/6/f/1/56f1e4f73ad8312394ab419844f6f0bb.jpg",
-      duration: 213,
+        "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/3/2/a/3/32a35f4d26ee56366397c09953f6c269.jpg",
+      duration: 237,
       zingChoice: false,
       isPrivate: false,
       preRelease: false,
-      releaseDate: 1584962700,
-      genreIds: ["IWZ9Z08I", "IWZ9Z088", "IWZ9Z089"],
+      releaseDate: 0,
+      genreIds: ["IWZ9Z097", "IWZ9Z08O"],
       indicators: [],
-      radioId: 1302847747,
       isIndie: false,
+      privacyIcon: "global",
       streamingStatus: 1,
-      allowAudioAds: true,
-      hasLyric: true,
-      objectType: "song",
+      allowAudioAds: false,
     },
+    playlistEncodeId: "",
+    currentPlaylist: {},
   });
   function globalReducer(state, action) {
     let newState = {};
@@ -65,6 +49,20 @@ function GlobalState({ children }) {
       }
       case "currentSong": {
         newState = { ...state, currentSong: action.payload.currentSong };
+        break;
+      }
+      case "playlistEncodeId": {
+        newState = {
+          ...state,
+          playlistEncodeId: action.payload.playlistEncodeId,
+        };
+        break;
+      }
+      case "currentPlaylist": {
+        newState = {
+          ...state,
+          currentPlaylist: action.payload.currentPlaylist,
+        };
         break;
       }
     }
