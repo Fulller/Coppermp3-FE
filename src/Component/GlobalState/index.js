@@ -80,7 +80,7 @@ function GlobalState({ children }) {
         window.location.href = `/${globalState.pageId}`;
       }
     }
-  }, [1]);
+  }, []);
   return (
     <GlobalContext.Provider value={[globalState, dispatch]}>
       {children}

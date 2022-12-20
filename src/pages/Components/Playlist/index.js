@@ -33,7 +33,7 @@ function Playlist({ data }) {
             >
               <Link to="/playlist">
                 <div className={cx("content")}>
-                  <img src={playlist.thumbnail}></img>
+                  <img src={playlist.thumbnailM}></img>
                   <div className={cx("control")}>
                     <span className={cx(["material-symbols-outlined", "play"])}>
                       play_arrow

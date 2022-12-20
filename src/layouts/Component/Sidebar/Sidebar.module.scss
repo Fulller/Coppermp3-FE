@@ -1,6 +1,7 @@
 .wrapper {
   width: 240px;
   background-color: var(--bgsubcl);
+  min-width: 240px;
 
   header {
     height: 70px;
@@ -12,9 +13,7 @@
       width: 120px;
     }
   }
-  a {
-    text-decoration: none;
-  }
+
   .list-control {
     .item-control {
       display: flex;

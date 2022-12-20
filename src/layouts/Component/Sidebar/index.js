@@ -22,6 +22,12 @@ function Sidebar() {
       link: "/discovery",
     },
     {
+      icon: <span className="material-symbols-outlined">monitoring</span>,
+      title: "#zingchart",
+      id: "zingchart",
+      link: "/discovery",
+    },
+    {
       icon: <span className="material-symbols-outlined">music_note</span>,
       title: "Nhạc mới",
       id: "newsong",

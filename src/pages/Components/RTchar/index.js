@@ -24,11 +24,16 @@ function RTchar({ data }) {
             }
             return (
               <div key={index} className={cx("item")}>
-                <span>{index + 1}</span>
-                <img
-                  src={item.thumbnail}
+                <span className={cx("rating")}>{index + 1}</span>
+                <div
+                  className={cx("thumbnail")}
+                  style={{ backgroundImage: `url(${item.thumbnail})` }}
                   onClick={(e) => changeCurrentSong(item.encodeId)}
-                ></img>
+                >
+                  <span className={cx(["material-symbols-outlined", "play"])}>
+                    play_arrow
+                  </span>
+                </div>
                 <div className={cx("info")}>
                   <h5>{item.title}</h5>
                   <h6>{item.artistsNames}</h6>

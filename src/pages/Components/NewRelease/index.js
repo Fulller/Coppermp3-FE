@@ -1,7 +1,7 @@
-import classNames from "classnames/bind";
 import { useState, useContext } from "react";
 import { GlobalContext } from "../../../Component/GlobalState";
 import SongPopper from "../../../Component/SongPopper";
+import classNames from "classnames/bind";
 import style from "./NewRelease.module.scss";
 import cpnStyle from "../Components.module.scss";
 
