@@ -1,26 +1,31 @@
-import style from "./Banner.module.scss";
-import cpnStyle from "../Components.module.scss";
-import classNames from "classnames/bind";
 import { useRef, useContext, useState, useCallback, memo } from "react";
 import { GlobalContext } from "../../../Component/GlobalState";
 import services from "../../../services";
+import style from "./Banner.module.scss";
+import cpnStyle from "../Components.module.scss";
+import classNames from "classnames/bind";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
 function Banner({ data }) {
+  console.log(data);
   let [globalState, dispatch] = useContext(GlobalContext);
   let bannerRef = useRef();
   function ListBanner() {
     return data.items.map((banner, index) => {
-      async function handleChangeCurrentSong(e, encodeId) {
-        let currentSong = await services.getInfoSong({ encodeId });
-        dispatch({ type: "currentSong", payload: { currentSong } });
+      async function handleChangeCurrentSong(e, encodeId, type) {
+        if (type == 1) {
+          let currentSong = await services.getInfoSong({ encodeId });
+          dispatch({ type: "currentSong", payload: { currentSong } });
+        }
       }
       return (
         <div
           key={index}
           className={cx("banner-item")}
-          onClick={(e) => handleChangeCurrentSong(e, banner.encodeId)}
+          onClick={(e) =>
+            handleChangeCurrentSong(e, banner.encodeId, banner.type)
+          }
         >
           <img src={banner.banner}></img>
         </div>

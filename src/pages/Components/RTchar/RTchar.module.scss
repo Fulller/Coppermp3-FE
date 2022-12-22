@@ -3,6 +3,7 @@
   border-radius: 10px;
   background-image: url("https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.8.9/static/media/bg-chart.fd766403.jpg");
   position: relative;
+  z-index: 0;
   &::after {
     content: "";
     position: absolute;
@@ -77,6 +78,7 @@
           }
         }
         .info {
+          margin-left: 12px;
           h5 {
             max-width: 200px;
             margin-bottom: 8px;

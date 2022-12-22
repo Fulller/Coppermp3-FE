@@ -8,9 +8,10 @@ import {
   Playlist,
   RTchar,
   NewReleaseChart,
+  ArtistSpotlight,
 } from "../Components";
-import cpnStyle from "../Components/Components.module.scss";
 
+import cpnStyle from "../Components/Components.module.scss";
 let cxCpn = classNames.bind(cpnStyle);
 function Discovery() {
   let [dataDiscovery, setDataDiscovery] = useState({});
@@ -38,8 +39,8 @@ function Discovery() {
             return (
               <NewReleaseChart data={dataBlock} key={index}></NewReleaseChart>
             );
+
           default:
-          // console.log(dataBlock);
         }
       });
     }

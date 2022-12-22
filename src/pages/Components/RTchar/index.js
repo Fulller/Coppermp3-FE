@@ -4,6 +4,7 @@ import classNames from "classnames/bind";
 import { GlobalContext } from "../../../Component/GlobalState";
 import { useContext } from "react";
 import services from "../../../services";
+import Thumbnail, { cxThumbnail } from "../../Components/Thumbnail";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -23,17 +24,31 @@ function RTchar({ data }) {
               return;
             }
             return (
-              <div key={index} className={cx("item")}>
+              <div
+                className={
+                  cx([
+                    "item",
+                    globalState.currentSong.encodeId == item.encodeId
+                      ? "active"
+                      : "",
+                  ]) +
+                  " " +
+                  cxThumbnail([
+                    "item",
+                    globalState.currentSong.encodeId == item.encodeId
+                      ? "active"
+                      : "",
+                  ])
+                }
+                key={index}
+              >
                 <span className={cx("rating")}>{index + 1}</span>
-                <div
-                  className={cx("thumbnail")}
-                  style={{ backgroundImage: `url(${item.thumbnail})` }}
-                  onClick={(e) => changeCurrentSong(item.encodeId)}
-                >
-                  <span className={cx(["material-symbols-outlined", "play"])}>
-                    play_arrow
-                  </span>
-                </div>
+                <Thumbnail
+                  src={item.thumbnail}
+                  dataSong={item}
+                  active={globalState.currentSong.encodeId == item.encodeId}
+                  size={60}
+                ></Thumbnail>
                 <div className={cx("info")}>
                   <h5>{item.title}</h5>
                   <h6>{item.artistsNames}</h6>

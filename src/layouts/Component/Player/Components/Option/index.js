@@ -31,6 +31,10 @@ function Option({ globalState, dispatch }) {
     songDom = document.getElementById("audio");
     volumeRef.current.value = LocalStorage.get("volumecmp3", 100);
     songDom.volume = LocalStorage.get("volumecmp3", 100) / 100;
+    songDom.onvolumechange = function () {
+      volumeRef.current.value = songDom.volume * 100;
+      LocalStorage.set("volumecmp3", volumeRef.current.value);
+    };
   }, []);
   return (
     <div className={cx("wrapper")}>

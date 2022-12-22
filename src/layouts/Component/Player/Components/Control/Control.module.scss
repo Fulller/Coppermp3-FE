@@ -37,6 +37,15 @@
         font-size: 32px;
       }
     }
+    .disable {
+      &:hover {
+        background-color: transparent;
+        transform: scale(1);
+      }
+      span {
+        color: rgba(255, 255, 255, 0.4);
+      }
+    }
   }
   .time {
     display: flex;

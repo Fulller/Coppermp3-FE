@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { GlobalContext } from "../../../Component/GlobalState";
 import SongPopper from "../../../Component/SongPopper";
+import Thumbnail, { cxThumbnail } from "../Thumbnail";
 import classNames from "classnames/bind";
 import style from "./NewRelease.module.scss";
 import cpnStyle from "../Components.module.scss";
@@ -50,28 +51,35 @@ function NewRelease({ data }) {
           }
           return (
             <div
-              className={cx([
-                "song",
-                globalState.currentSong.encodeId == song.encodeId
-                  ? "isPlay"
-                  : "",
-              ])}
+              className={
+                cx([
+                  "item",
+                  globalState.currentSong.encodeId == song.encodeId
+                    ? "active"
+                    : "",
+                ]) +
+                " " +
+                cxThumbnail([
+                  "item",
+                  globalState.currentSong.encodeId == song.encodeId
+                    ? "active"
+                    : "",
+                ])
+              }
               key={index}
             >
-              <img
+              <Thumbnail
                 src={song.thumbnail}
-                onClick={() =>
-                  dispatch({
-                    type: "currentSong",
-                    payload: { currentSong: song },
-                  })
-                }
-              ></img>
+                dataSong={song}
+                active={globalState.currentSong.encodeId == song.encodeId}
+                size={60}
+                playList={data.items[option]}
+              ></Thumbnail>
               <div className={cx("info")}>
                 <h4>{song.title}</h4>
                 <h5>{song.artistsNames}</h5>
               </div>
-              <span>
+              <span className={cx("popper")}>
                 <SongPopper song={song}></SongPopper>
               </span>
             </div>

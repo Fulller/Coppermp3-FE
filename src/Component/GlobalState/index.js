@@ -35,6 +35,9 @@ function GlobalState({ children }) {
     },
     playlistEncodeId: "",
     currentPlaylist: {},
+    prevSong: null,
+    nextSong: null,
+    isPlay: false,
   });
   function globalReducer(state, action) {
     let newState = {};
@@ -48,7 +51,29 @@ function GlobalState({ children }) {
         break;
       }
       case "currentSong": {
-        newState = { ...state, currentSong: action.payload.currentSong };
+        let prevSongPl = null;
+        let nextSongPl = null;
+        for (let i = 0; i < state.currentPlaylist.length; i++) {
+          if (state.currentPlaylist.length > 0) {
+            if (
+              state.currentPlaylist[i].encodeId ==
+              action.payload.currentSong.encodeId
+            ) {
+              if (state.currentPlaylist[i - 1]) {
+                prevSongPl = state.currentPlaylist[i - 1];
+              }
+              if (state.currentPlaylist[i + 1]) {
+                nextSongPl = state.currentPlaylist[i + 1];
+              }
+            }
+          }
+        }
+        newState = {
+          ...state,
+          currentSong: action.payload.currentSong,
+          prevSong: prevSongPl,
+          nextSong: nextSongPl,
+        };
         break;
       }
       case "playlistEncodeId": {
@@ -65,6 +90,12 @@ function GlobalState({ children }) {
         };
         break;
       }
+      case "isPlay":
+        newState = {
+          ...state,
+          isPlay: action.payload.isPlay,
+        };
+        break;
     }
     LocalStorage.set("coppermp3", newState);
     return { ...newState };
@@ -81,6 +112,7 @@ function GlobalState({ children }) {
       }
     }
   }, []);
+
   return (
     <GlobalContext.Provider value={[globalState, dispatch]}>
       {children}

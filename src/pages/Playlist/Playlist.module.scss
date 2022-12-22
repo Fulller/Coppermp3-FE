@@ -1,0 +1,145 @@
+.wrapper {
+  display: grid;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  .info {
+    width: 300px;
+    margin-right: 32px;
+
+    .thumbnail {
+      width: 300px;
+      height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.5s;
+      animation: init 1s linear;
+
+      @keyframes init {
+        0% {
+          border-radius: 50%;
+          transform: rotate(0deg);
+        }
+        80% {
+          transform: rotate(360deg);
+          border-radius: 50%;
+        }
+        100% {
+          transform: rotate(360deg);
+          border-radius: 12px;
+        }
+      }
+      &:hover {
+        img {
+          transform: scale(1.2);
+        }
+      }
+      img {
+        border-radius: 12px;
+        width: 300px;
+        height: 300px;
+        transition: all 0.5s;
+      }
+    }
+    .active {
+      animation: rotate 10s infinite linear 0.5s, radious 0.3s linear 0.2s;
+      @keyframes rotate {
+        from {
+          border-radius: 50%;
+          transform: rotate(0);
+        }
+        to {
+          border-radius: 50%;
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes radious {
+        from {
+          border-radius: 12px;
+        }
+        to {
+          border-radius: 50%;
+        }
+      }
+    }
+    .name {
+      margin-top: 8px;
+      h5 {
+        text-align: center;
+        font-size: 20px;
+        line-height: 26px;
+        margin-bottom: 8px;
+      }
+      h6 {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 20px;
+      }
+    }
+  }
+  .listsong {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    .heading {
+      display: grid;
+      padding: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      grid-template-columns: 50% 35% 15%;
+      border-radius: 8px;
+      span {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 600;
+      }
+    }
+    .item {
+      display: grid;
+      padding: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      grid-template-columns: 10% 40% 40% 10%;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: rgba(227, 142, 244, 0.12);
+      }
+      .thumbnail {
+        width: 50px;
+        height: 50px;
+        img {
+          border-radius: 6px;
+          width: 50px;
+          height: 50px;
+        }
+      }
+      .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        h5 {
+          font-weight: 500;
+        }
+        h6 {
+          color: rgba(255, 255, 255, 0.5);
+          font-weight: 400;
+        }
+      }
+      p,
+      span {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+    .active {
+      background-color: rgba(254, 249, 254, 0.2);
+    }
+  }
+}

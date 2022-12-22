@@ -22,18 +22,30 @@
       border-left: 3px solid transparent;
       transition: all 0.3s;
 
+      &:hover {
+        .title,
+        span {
+          color: white;
+        }
+      }
       .title {
         margin-left: 12px;
         font-size: 13px;
         font-weight: 700;
+        color: rgba(255, 255, 255, 0.6);
       }
       span {
         font-size: 18px;
+        color: rgba(255, 255, 255, 0.6);
       }
     }
     .active {
       border-left: 3px solid rgb(91, 91, 249);
       background-color: rgba(255, 255, 255, 0.1);
+      .title,
+      span {
+        color: white;
+      }
     }
   }
 }
