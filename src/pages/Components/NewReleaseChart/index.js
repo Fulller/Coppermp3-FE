@@ -11,6 +11,10 @@ function NewReleaseChart({ data }) {
   let [globalState, dispatch] = useContext(GlobalContext);
   async function handleChangeCurrentSong(encodeId) {
     let currentSong = await services.getInfoSong({ encodeId });
+    dispatch({
+      type: "currentPlaylist",
+      payload: { currentPlaylist: data.items },
+    });
     dispatch({ type: "currentSong", payload: { currentSong } });
   }
   return (

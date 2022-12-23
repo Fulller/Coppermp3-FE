@@ -6,6 +6,12 @@ import LocalStorage from "../../../../../tools/localStorage";
 
 let cx = classNames.bind(style);
 function Control({ globalState, dispatch }) {
+  let [isReplay, setIsReplay] = useState(
+    LocalStorage.get("isReplaycmp3", false)
+  );
+  let [isRandom, setIsRandom] = useState(
+    LocalStorage.get("isRandomcmp3", false)
+  );
   let prevRef = useRef();
   let playRef = useRef();
   let nextRef = useRef();
@@ -36,6 +42,7 @@ function Control({ globalState, dispatch }) {
       this.nextDom = nextRef.current;
       this.isPlaying = false;
       this.isReplay = LocalStorage.get("isReplaycmp3", false);
+      this.isRandom = LocalStorage.get("isRandomcmp3", false);
       this.start();
     }
     handleEvent() {
@@ -120,20 +127,44 @@ function Control({ globalState, dispatch }) {
             setPercentTime.call(this, e.key);
             break;
           }
-          case "ArrowDown":
-          case "ArrowLeft": {
+          case "ArrowDown": {
             setVolume.call(this, "down");
             break;
           }
-          case "ArrowUp":
-          case "ArrowRight": {
+          case "ArrowUp": {
             setVolume.call(this, "up");
+            break;
+          }
+          case "ArrowRight": {
+            this.songDom.currentTime += 10;
+            break;
+          }
+          case "ArrowLeft": {
+            this.songDom.currentTime -= 10;
+            break;
+          }
+          case ",": {
+            this.prevDom.click();
+            break;
+          }
+          case ".": {
+            this.nextDom.click();
             break;
           }
         }
       }
-      function handleEndSong(e) {
-        this.nextDom.click();
+      function hanldeEndSong(e) {
+        if (this.isReplay) {
+          this.songDom.play();
+        } else {
+          if (globalState.nextSong) {
+            this.nextDom.click();
+          } else {
+            if (this.isRandom) {
+              this.prevDom.click();
+            }
+          }
+        }
       }
 
       this.songDom.onplay = changeComePlay.bind(this);
@@ -141,8 +172,7 @@ function Control({ globalState, dispatch }) {
       this.playDom.onclick = handelePlayandPause.bind(this);
       this.songDom.ontimeupdate = loadTime.bind(this);
       this.timeInputDom.oninput = changeCurrentTime.bind(this);
-      this.songDom.onended = handleEndSong.bind(this);
-
+      this.songDom.onended = hanldeEndSong.bind(this);
       document.documentElement.onkeydown = handleKeyboad.bind(this);
     }
     init() {
@@ -181,19 +211,47 @@ function Control({ globalState, dispatch }) {
     }
   }, [globalState.currentSong.encodeId]);
 
+  function handleClickReplay() {
+    let newIsReplay = !isReplay;
+    LocalStorage.set("isReplaycmp3", newIsReplay);
+    song.isReplay = newIsReplay;
+    setIsReplay(newIsReplay);
+  }
+  function handleClickRandom() {
+    let newIsRandom = !isRandom;
+    LocalStorage.set("isRandomcmp3", newIsRandom);
+    song.isRandom = newIsRandom;
+    setIsRandom(newIsRandom);
+  }
   return (
     <div className={cx("wrapper")}>
       <div className={cx("control")}>
-        <button ref={randomRef}>
+        <button
+          ref={randomRef}
+          className={cx(isRandom ? "active" : "")}
+          onClick={handleClickRandom}
+        >
           <span className="material-symbols-outlined">shuffle</span>
         </button>
         <button
           ref={prevRef}
           onClick={() => {
+            function prevSong() {
+              if (song.isRandom) {
+                if (globalState.currentPlaylist.length > 0) {
+                  return globalState.currentPlaylist[
+                    Math.floor(
+                      Math.random() * globalState.currentPlaylist.length
+                    )
+                  ];
+                }
+              }
+              return globalState.prevSong;
+            }
             if (globalState.prevSong) {
               dispatch({
                 type: "currentSong",
-                payload: { currentSong: globalState.prevSong },
+                payload: { currentSong: prevSong() },
               });
             }
           }}
@@ -207,10 +265,22 @@ function Control({ globalState, dispatch }) {
         <button
           ref={nextRef}
           onClick={() => {
+            function nextSong() {
+              if (song.isRandom) {
+                if (globalState.currentPlaylist.length > 0) {
+                  return globalState.currentPlaylist[
+                    Math.floor(
+                      Math.random() * globalState.currentPlaylist.length
+                    )
+                  ];
+                }
+              }
+              return globalState.nextSong;
+            }
             if (globalState.nextSong) {
               dispatch({
                 type: "currentSong",
-                payload: { currentSong: globalState.nextSong },
+                payload: { currentSong: nextSong() },
               });
             }
           }}
@@ -218,14 +288,20 @@ function Control({ globalState, dispatch }) {
         >
           <span className="material-symbols-outlined">skip_next</span>
         </button>
-        <button ref={replayRef}>
+        <button
+          ref={replayRef}
+          className={cx(isReplay ? "active" : "")}
+          onClick={handleClickReplay}
+        >
           <span className="material-symbols-outlined">autorenew</span>
         </button>
       </div>
       <div className={cx("time")}>
         <span ref={timeCurrentRef}>0:00</span>
         <input ref={timeInputRef} type="range" max="100"></input>
-        <span ref={timeEndRef}>4:00</span>
+        <span ref={timeEndRef} style={{ color: "white" }}>
+          4:00
+        </span>
       </div>
     </div>
   );

@@ -8,7 +8,6 @@ import classNames from "classnames/bind";
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
 function Banner({ data }) {
-  console.log(data);
   let [globalState, dispatch] = useContext(GlobalContext);
   let bannerRef = useRef();
   function ListBanner() {

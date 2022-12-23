@@ -12,17 +12,10 @@ import Tippy from "@tippyjs/react";
 let cx = classNames.bind(style);
 function SongPopper({ song, style }) {
   let [isShow, setIsShow] = useState(false);
-  let [href, setHref] = useState("");
   function handleShowAndHide() {
     setIsShow(!isShow);
   }
-  useEffect(() => {
-    async function hrefDonwload() {
-      let data = await services.getSong({ encodeId: song.encodeId });
-      setHref(data[128]);
-    }
-    hrefDonwload();
-  }, []);
+
   return (
     <Headless
       visible={isShow}
@@ -36,10 +29,14 @@ function SongPopper({ song, style }) {
             </div>
           </div>
           <div className={cx("control")}>
-            <button>
+            <a
+              href={urlMedia.audio(song.encodeId)}
+              download={"helo"}
+              type="audio/mpeg"
+            >
               <span className="material-symbols-outlined">download</span>
               <h6>Tải xuống</h6>
-            </button>
+            </a>
             <button>
               <span className="material-symbols-outlined">lyrics</span>
               <h6>Lời bài hát</h6>

@@ -48,6 +48,7 @@ function RTchar({ data }) {
                   dataSong={item}
                   active={globalState.currentSong.encodeId == item.encodeId}
                   size={60}
+                  playList={data.items}
                 ></Thumbnail>
                 <div className={cx("info")}>
                   <h5>{item.title}</h5>
