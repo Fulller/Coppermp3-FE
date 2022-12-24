@@ -42,8 +42,6 @@ function Control({ globalState, dispatch, style }) {
     };
     audio.ontimeupdate = function () {
       let { currentTime, duration } = audio;
-      currentTime = Math.floor(currentTime);
-      duration = Math.floor(duration);
       inputTimeDom.value = currentTime;
       inputTimeDom.max = duration;
       currentTimeDom.innerText = nomalizeTime(currentTime);
@@ -219,7 +217,7 @@ function Control({ globalState, dispatch, style }) {
         <span>{nomalizeTime(LocalStorage.get("timecmp3", 0))}</span>
         <input
           type="range"
-          onChange={hanleChangeCurrentTime}
+          onInput={hanleChangeCurrentTime}
           value={LocalStorage.get("timecmp3", 0)}
           max={LocalStorage.get("durationcmp3", 0)}
         ></input>

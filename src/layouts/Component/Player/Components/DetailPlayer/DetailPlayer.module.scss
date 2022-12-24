@@ -1,0 +1,76 @@
+.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(rgb(49, 52, 95, 0.95), rgb(29, 29, 97));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  animation: scrollShow 0.4s;
+
+  @keyframes scrollShow {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  .header {
+    position: relative;
+    margin-bottom: 12px;
+    .optionalList {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      border-radius: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      .optionalItem {
+        border-radius: 30px;
+        padding: 4px 24px;
+        font-size: 16px;
+        font-weight: 700;
+        transition: all 0.3s linear;
+      }
+      .activeOptional {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+    }
+    button {
+      right: -460px;
+      top: -4px;
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        font-size: 30px;
+      }
+    }
+  }
+  .container {
+    flex: 1;
+    width: 100%;
+  }
+}
+.hideDetailPlayer {
+  animation: scrollHide 0.4s;
+  @keyframes scrollHide {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(100%);
+      //   opacity: 0;
+    }
+  }
+}
