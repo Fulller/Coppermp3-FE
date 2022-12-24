@@ -5,7 +5,7 @@ import urlMedia from "../../../../../tools/urlMedia";
 import LocalStorage from "../../../../../tools/localStorage";
 
 let cx = classNames.bind(style);
-function Control({ globalState, dispatch }) {
+function Control({ globalState, dispatch, style }) {
   let [isReplay, setIsReplay] = useState(
     LocalStorage.get("isReplaycmp3", false)
   );
@@ -224,7 +224,7 @@ function Control({ globalState, dispatch }) {
     setIsRandom(newIsRandom);
   }
   return (
-    <div className={cx("wrapper")}>
+    <div className={cx("wrapper")} style={style}>
       <div className={cx("control")}>
         <button
           ref={randomRef}
@@ -260,7 +260,9 @@ function Control({ globalState, dispatch }) {
           <span className="material-symbols-outlined">skip_previous</span>
         </button>
         <button ref={playRef} className={cx("play")}>
-          <span className={cx(["material-symbols-outlined"])}>play_arrow</span>
+          <span className={cx(["material-symbols-outlined"])}>
+            {globalState.isPlay ? "pause" : "play_arrow"}
+          </span>
         </button>
         <button
           ref={nextRef}

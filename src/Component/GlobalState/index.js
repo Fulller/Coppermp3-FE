@@ -111,6 +111,7 @@ function GlobalState({ children }) {
         window.location.href = `/${globalState.pageId}`;
       }
     }
+    dispatch({ type: "isPlay", payload: { isPlay: false } });
   }, []);
 
   return (

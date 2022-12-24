@@ -1,10 +1,13 @@
 import style from "./Option.module.scss";
 import classNames from "classnames/bind";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import LocalStorage from "../../../../../tools/localStorage";
+import Headless from "@tippyjs/react/headless";
+import DetailPlayer from "../../../DetailPlayer";
 
 let cx = classNames.bind(style);
 function Option({ globalState, dispatch }) {
+  let [showDetailPlayer, setShowDetailPlayer] = useState(false);
   let volumeRef = useRef();
   let volumeIconRef = useRef();
   let songDom = document.getElementById("audio");
@@ -55,9 +58,14 @@ function Option({ globalState, dispatch }) {
         max={100}
         onChange={changeVolume}
       ></input>
-      <button>
-        <span className="material-symbols-outlined">fullscreen</span>
+      <button onClick={() => setShowDetailPlayer(true)}>
+        <span className="material-symbols-outlined">keyboard_arrow_up</span>
       </button>
+      {showDetailPlayer ? (
+        <DetailPlayer setShowDetailPlayer={setShowDetailPlayer}></DetailPlayer>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

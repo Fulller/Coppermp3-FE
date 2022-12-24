@@ -1,0 +1,12 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(
+    to right,
+    rgb(245, 153, 153),
+    rgb(106, 113, 244)
+  );
+}

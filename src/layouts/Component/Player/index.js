@@ -1,6 +1,6 @@
 import style from "./Player.module.scss";
 import classNames from "classnames/bind";
-import Control from "./Components/Control";
+import Control from "./Components/Control/Control";
 import Info from "./Components/Info";
 import Option from "./Components/Option";
 import { useContext } from "react";
