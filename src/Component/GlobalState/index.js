@@ -55,15 +55,17 @@ function GlobalState({ children }) {
         let nextSongPl = null;
         for (let i = 0; i < state.currentPlaylist.length; i++) {
           if (state.currentPlaylist.length > 0) {
-            if (
-              state.currentPlaylist[i].encodeId ==
-              action.payload.currentSong.encodeId
-            ) {
-              if (state.currentPlaylist[i - 1]) {
-                prevSongPl = state.currentPlaylist[i - 1];
-              }
-              if (state.currentPlaylist[i + 1]) {
-                nextSongPl = state.currentPlaylist[i + 1];
+            if (state.currentPlaylist[i]) {
+              if (
+                state.currentPlaylist[i].encodeId ==
+                action.payload.currentSong.encodeId
+              ) {
+                if (state.currentPlaylist[i - 1]) {
+                  prevSongPl = state.currentPlaylist[i - 1];
+                }
+                if (state.currentPlaylist[i + 1]) {
+                  nextSongPl = state.currentPlaylist[i + 1];
+                }
               }
             }
           }

@@ -42,6 +42,8 @@ function Control({ globalState, dispatch, style }) {
     };
     audio.ontimeupdate = function () {
       let { currentTime, duration } = audio;
+      currentTime = Math.floor(currentTime);
+      duration = Math.ceil(duration);
       inputTimeDom.value = currentTime;
       inputTimeDom.max = duration;
       currentTimeDom.innerText = nomalizeTime(currentTime);
@@ -145,7 +147,7 @@ function Control({ globalState, dispatch, style }) {
     }
   }
   function handleNextBtn(e) {
-    if (globalState.prevSong) {
+    if (globalState.nextSong) {
       if (LocalStorage.get("isRandomcmp3", false)) {
         randomPlaySong();
       } else {

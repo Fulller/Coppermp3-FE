@@ -7,6 +7,9 @@
   --textsubcl: rgba(255, 255, 255, 0.6);
   --solidcl: rgb(138, 109, 245);
 }
+html {
+  scroll-behavior: smooth;
+}
 * {
   border: 0;
   margin: 0;

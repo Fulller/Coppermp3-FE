@@ -1,6 +1,9 @@
 import style from "./DetailPlayer.module.scss";
 import classNames from "classnames/bind";
 import { memo, useRef, useState } from "react";
+import Lyric from "./Component/Lyric";
+import Playlist from "./Component/Playlist";
+import LocalStorage from "../../../../../tools/localStorage";
 
 let cx = classNames.bind(style);
 function Detailplayer({
@@ -12,7 +15,9 @@ function Detailplayer({
 }) {
   let detailPlayerRef = useRef();
   function TopDetailPlayer() {
-    let [optional, setOptional] = useState("playlist");
+    let [optional, setOptional] = useState(
+      LocalStorage.get("detailOptionalcmp3", "playlist")
+    );
     const optionalList = [
       { title: "Danh sách phát", id: "playlist" },
       { title: "Lời bài hát", id: "lyric" },
@@ -30,7 +35,10 @@ function Detailplayer({
                       optional == optionalItem.id ? "activeOptional" : "",
                     ])}
                     key={index}
-                    onClick={() => setOptional(optionalItem.id)}
+                    onClick={() => {
+                      LocalStorage.set("detailOptionalcmp3", optionalItem.id);
+                      setOptional(optionalItem.id);
+                    }}
                   >
                     {optionalItem.title}
                   </div>
@@ -51,7 +59,10 @@ function Detailplayer({
               <span className="material-symbols-outlined">expand_more</span>
             </button>
           </div>
-          <div className={cx("container")}></div>
+          <div className={cx("container")}>
+            {optional == "playlist" ? <Playlist></Playlist> : <></>}
+            {optional == "lyric" ? <Lyric></Lyric> : <></>}
+          </div>
         </>
       );
     }
@@ -60,6 +71,12 @@ function Detailplayer({
   return (
     <div className={showDetailPlayer ? cx("active") : ""} ref={detailPlayerRef}>
       <TopDetailPlayer></TopDetailPlayer>
+      <div
+        className={cx("background")}
+        style={{
+          backgroundImage: `url(${globalState.currentSong.thumbnailM})`,
+        }}
+      ></div>
       <div className={cx("control")}>{children}</div>
     </div>
   );
