@@ -42,8 +42,6 @@ function Control({ globalState, dispatch, style }) {
     };
     audio.ontimeupdate = function () {
       let { currentTime, duration } = audio;
-      currentTime = Math.floor(currentTime);
-      duration = Math.ceil(duration);
       inputTimeDom.value = currentTime;
       inputTimeDom.max = duration;
       currentTimeDom.innerText = nomalizeTime(currentTime);

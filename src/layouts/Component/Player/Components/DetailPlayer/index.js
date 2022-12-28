@@ -1,9 +1,11 @@
 import style from "./DetailPlayer.module.scss";
 import classNames from "classnames/bind";
-import { memo, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import Lyric from "./Component/Lyric";
 import Playlist from "./Component/Playlist";
 import LocalStorage from "../../../../../tools/localStorage";
+import { async } from "q";
+import services from "../../../../../services";
 
 let cx = classNames.bind(style);
 function Detailplayer({
@@ -14,6 +16,7 @@ function Detailplayer({
   children,
 }) {
   let detailPlayerRef = useRef();
+  let [lyric, setLyric] = useState([]);
   function TopDetailPlayer() {
     let [optional, setOptional] = useState(
       LocalStorage.get("detailOptionalcmp3", "playlist")
@@ -61,13 +64,40 @@ function Detailplayer({
           </div>
           <div className={cx("container")}>
             {optional == "playlist" ? <Playlist></Playlist> : <></>}
-            {optional == "lyric" ? <Lyric></Lyric> : <></>}
+            {optional == "lyric" ? <Lyric lyric={lyric}></Lyric> : <></>}
           </div>
         </>
       );
     }
     return <></>;
   }
+  useEffect(() => {
+    async function getLyric() {
+      let dataLyric = await services.getLyric({
+        encodeId: globalState.currentSong.encodeId,
+      });
+      if (dataLyric.sentences) {
+        dataLyric = dataLyric.sentences.map((line) => {
+          let startTime = line.words[0].startTime;
+          let endTime = line.words[line.words.length - 1].endTime;
+          let data = line.words
+            .map((word) => {
+              return word.data;
+            })
+            .join(" ");
+          return {
+            startTime,
+            endTime,
+            data,
+          };
+        });
+        setLyric(dataLyric);
+      } else {
+        setLyric(null);
+      }
+    }
+    getLyric();
+  }, [globalState.currentSong]);
   return (
     <div className={showDetailPlayer ? cx("active") : ""} ref={detailPlayerRef}>
       <TopDetailPlayer></TopDetailPlayer>

@@ -1,0 +1,60 @@
+.wrapper .list-option {
+  margin-bottom: 16px;
+}
+.wrapper .list-option button {
+  cursor: pointer;
+  padding: 6px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  font-size: 12px;
+  margin-right: 15px;
+  font-weight: 600;
+}
+.wrapper .list-option button:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.wrapper .list-option .active {
+  background-color: var(--solidcl);
+}
+.wrapper .list-song {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0px 20px;
+}
+.wrapper .list-song .item {
+  display: flex;
+  padding: 10px;
+  border-radius: 6px;
+  transition: all 0.3s;
+  align-items: center;
+}
+.wrapper .list-song .item .popper {
+  margin-left: auto;
+  opacity: 0;
+}
+.wrapper .list-song .item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.wrapper .list-song .item:hover .popper {
+  opacity: 1;
+}
+.wrapper .list-song .item .info {
+  padding-left: 10px;
+}
+.wrapper .list-song .item .info h4 {
+  white-space: nowrap;
+  width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.wrapper .list-song .item .info h5 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 400;
+}
+.wrapper .list-song .active {
+  background-color: rgba(255, 255, 255, 0.1);
+}/*# sourceMappingURL=NewRelease.module.css.map */

@@ -1,0 +1,33 @@
+.wrapper {
+  background-color: var(--bgcl);
+  height: calc(100vh - 90px);
+  max-width: 100%;
+  overflow: hidden;
+  padding: 70px 60px 0px 60px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+.wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+.wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+.wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgb(102, 102, 249);
+}
+.wrapper .view-item {
+  margin-top: 48px;
+  max-width: 100%;
+  width: 920px;
+}
+.wrapper .view-item h3 {
+  font-size: 20;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=Components.module.css.map */

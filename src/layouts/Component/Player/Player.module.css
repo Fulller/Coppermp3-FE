@@ -1,0 +1,11 @@
+.wrapper {
+  background-color: #130c1c;
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 1px 3px gray;
+  z-index: 1;
+  padding-right: 20px;
+}/*# sourceMappingURL=Player.module.css.map */

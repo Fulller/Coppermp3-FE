@@ -1,0 +1,44 @@
+.wrapper {
+  width: 240px;
+  background-color: var(--bgsubcl);
+  min-width: 240px;
+}
+.wrapper header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 0px 20px;
+}
+.wrapper header img {
+  width: 120px;
+}
+.wrapper .list-control .item-control {
+  display: flex;
+  align-items: center;
+  padding: 6px 20px;
+  border-left: 3px solid transparent;
+  transition: all 0.3s;
+}
+.wrapper .list-control .item-control:hover .title,
+.wrapper .list-control .item-control:hover span {
+  color: white;
+}
+.wrapper .list-control .item-control .title {
+  margin-left: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+}
+.wrapper .list-control .item-control span {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.wrapper .list-control .active {
+  border-left: 3px solid rgb(91, 91, 249);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.wrapper .list-control .active .title,
+.wrapper .list-control .active span {
+  color: white;
+}/*# sourceMappingURL=Sidebar.module.css.map */

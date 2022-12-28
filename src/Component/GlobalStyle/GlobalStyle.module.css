@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+:root {
+  --bgcl: rgb(23, 15, 35);
+  --bgsubcl: rgb(35, 27, 46);
+  --bdcl: rgba(255, 255, 255, 0.4);
+  --textcl: white;
+  --textsubcl: rgba(255, 255, 255, 0.6);
+  --solidcl: rgb(138, 109, 245);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--textcl);
+  background-color: transparent;
+  font-family: "Inter", sans-serif;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
+}
+
+a {
+  text-decoration: none;
+}/*# sourceMappingURL=GlobalStyle.module.css.map */

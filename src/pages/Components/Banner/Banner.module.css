@@ -1,0 +1,63 @@
+.wrapper {
+  margin-top: 32px !important;
+  position: relative;
+}
+.wrapper:hover span {
+  opacity: 1;
+}
+.wrapper span {
+  transition: all 0.5s;
+  position: absolute;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translateY(50px);
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.4);
+}
+.wrapper span:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: rgb(255, 255, 255);
+}
+.wrapper .prev {
+  left: 20px;
+}
+.wrapper .next {
+  right: 20px;
+}
+.wrapper .list-banner {
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  position: relative;
+  scroll-behavior: smooth;
+}
+.wrapper .list-banner::-webkit-scrollbar {
+  display: none;
+}
+.wrapper .list-banner .banner-item {
+  margin-right: 26px;
+  width: 288px;
+  height: 161px;
+  min-width: 288px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.wrapper .list-banner .banner-item:hover img {
+  transform: scale(1.2);
+}
+.wrapper .list-banner .banner-item img {
+  border-radius: 8px;
+  transition: all 0.3s;
+  overflow: hidden;
+  width: 288px;
+  height: 161px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.wrapper .list-banner :last-child {
+  margin-right: 0px;
+}/*# sourceMappingURL=Banner.module.css.map */

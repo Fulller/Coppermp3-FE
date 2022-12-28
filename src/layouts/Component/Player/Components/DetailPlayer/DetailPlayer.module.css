@@ -1,0 +1,109 @@
+.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  -webkit-animation: scrollShow 0.4s;
+          animation: scrollShow 0.4s;
+  background-image: radial-gradient(rgb(34, 34, 70), rgb(7, 7, 81));
+}
+.active .background {
+  opacity: 0.25;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  filter: blur(8px);
+}
+@-webkit-keyframes scrollShow {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes scrollShow {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.active .header {
+  position: relative;
+  margin-bottom: 12px;
+}
+.active .header .optionalList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.active .header .optionalList .optionalItem {
+  border-radius: 30px;
+  padding: 4px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s linear;
+}
+.active .header .optionalList .activeOptional {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.active .header button {
+  right: -460px;
+  top: -4px;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.active .header button span {
+  font-size: 30px;
+}
+.active .container {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hideDetailPlayer {
+  -webkit-animation: scrollHide 0.4s;
+          animation: scrollHide 0.4s;
+}
+@-webkit-keyframes scrollHide {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes scrollHide {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}/*# sourceMappingURL=DetailPlayer.module.css.map */

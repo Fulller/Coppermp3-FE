@@ -1,0 +1,11 @@
+.wrapper {
+  background-color: rgba(23, 15, 35, 0.98);
+  height: 70px;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 50px;
+  z-index: 1;
+}/*# sourceMappingURL=Header.module.css.map */
