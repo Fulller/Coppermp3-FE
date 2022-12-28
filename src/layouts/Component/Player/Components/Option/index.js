@@ -48,7 +48,15 @@ function Option({
         <span className="material-symbols-outlined">movie</span>
       </button>
       <button>
-        <span className="material-symbols-outlined">mic_external_on</span>
+        <span
+          className="material-symbols-outlined"
+          onClick={() => {
+            LocalStorage.set("detailOptionalcmp3", "lyric");
+            setShowDetailPlayer(!showDetailPlayer);
+          }}
+        >
+          mic_external_on
+        </span>
       </button>
       <button onClick={handleOffVolume}>
         <span className="material-symbols-outlined" ref={volumeIconRef}>

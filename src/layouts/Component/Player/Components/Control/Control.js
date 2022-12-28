@@ -7,7 +7,7 @@ import { doc } from "prettier";
 
 let cx = classNames.bind(style);
 
-function Control({ globalState, dispatch, style }) {
+function Control({ globalState, dispatch, style, showDetailPlayer }) {
   let audio = document.querySelector("audio");
   let timeRef = useRef();
   let controlRef = useRef();
@@ -183,7 +183,10 @@ function Control({ globalState, dispatch, style }) {
     });
   }
   return (
-    <div className={cx("wrapper")} style={style}>
+    <div
+      className={cx(["wrapper", showDetailPlayer && "detailPlayer"])}
+      style={style}
+    >
       <div className={cx("control")} ref={controlRef}>
         <button
           className={cx(isRandom ? "active" : "")}

@@ -20,7 +20,11 @@ function Player() {
         setShowDetailPlayer={setShowDetailPlayer}
         showDetailPlayer={showDetailPlayer}
       >
-        <Control globalState={globalState} dispatch={dispatch}></Control>
+        <Control
+          globalState={globalState}
+          dispatch={dispatch}
+          showDetailPlayer={showDetailPlayer}
+        ></Control>
       </Detailplayer>
       <Option
         globalState={globalState}
