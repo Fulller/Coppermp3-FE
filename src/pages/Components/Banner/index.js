@@ -14,7 +14,24 @@ function Banner({ data }) {
     return data.items.map((banner, index) => {
       async function handleChangeCurrentSong(e, encodeId, type) {
         if (type == 1) {
+          async function listSong() {
+            let list = [];
+            for (let song of data.items) {
+              if (song.type == 1) {
+                let dataSong = await services.getInfoSong({
+                  encodeId: song.encodeId,
+                });
+                list.push(dataSong);
+                console.log(dataSong);
+              }
+            }
+            return list;
+          }
           let currentSong = await services.getInfoSong({ encodeId });
+          dispatch({
+            type: "currentPlaylist",
+            payload: { currentPlaylist: await listSong() },
+          });
           dispatch({ type: "currentSong", payload: { currentSong } });
         }
       }
