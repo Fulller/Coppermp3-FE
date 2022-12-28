@@ -4,7 +4,15 @@ import { GlobalContext } from "../../../Component/GlobalState";
 import { useContext, useEffect, useState } from "react";
 
 let cx = classNames.bind(style);
-function Thumbnail({ size, src, fontSize = 30, dataSong, active, playList }) {
+function Thumbnail({
+  size,
+  src,
+  fontSize = 30,
+  dataSong,
+  active,
+  playList,
+  playListEncodeId,
+}) {
   let [globalState, dispatch] = useContext(GlobalContext);
   let audioDom = null;
 
@@ -41,7 +49,10 @@ function Thumbnail({ size, src, fontSize = 30, dataSong, active, playList }) {
             payload: { currentPlaylist: playList },
           });
         }
-        dispatch({ type: "currentSong", payload: { currentSong: dataSong } });
+        dispatch({
+          type: "currentSong",
+          payload: { currentSong: { ...dataSong, playListEncodeId } },
+        });
       }}
     >
       <img src={src} height={size} width={size}></img>

@@ -19,7 +19,7 @@ function Playlist() {
       setPlaylistData(data);
     }
     loadPlaylist();
-  }, []);
+  }, [globalState.playlistEncodeId]);
   function InfoPlaylist({ data }) {
     return (
       <div className={cx("info")}>
@@ -79,6 +79,7 @@ function Playlist() {
                   dataSong={item}
                   active={globalState.currentSong.encodeId == item.encodeId}
                   playList={playlistData.song.items}
+                  playListEncodeId={playlistData.encodeId}
                 ></Thumbnail>
                 <div className={cx("info")}>
                   <h5>{item.title}</h5>
