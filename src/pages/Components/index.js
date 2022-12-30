@@ -6,6 +6,7 @@ import NewReleaseChart from "./NewReleaseChart";
 import ArtistSpotlight from "./ArtistSpotlight";
 import Songs from "./Songs";
 import MV from "./MV";
+import Artist from "./Artist";
 export {
   Banner,
   NewRelease,
@@ -15,4 +16,5 @@ export {
   ArtistSpotlight,
   Songs,
   MV,
+  Artist,
 };

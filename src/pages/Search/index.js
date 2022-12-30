@@ -2,17 +2,19 @@ import { useState, useRef, useContext, useEffect, memo } from "react";
 import classNames from "classnames/bind";
 import services from "../../services";
 import urlMedia from "../../tools/urlMedia";
-import { Playlist, Songs, MV } from "../Components";
+import { Playlist, Songs, MV, Artist } from "../Components";
 import { GlobalContext } from "../../Component/GlobalState";
 import style from "./Search.module.scss";
-
+import LocalStorage from "../../tools/localStorage";
 import cpnStyle from "../Components/Components.module.scss";
 let cxCpn = classNames.bind(cpnStyle);
 let cx = classNames.bind(style);
 function Search() {
   let [dataSearch, setDataSearch] = useState(null);
   let [globalState, dispatch] = useContext(GlobalContext);
-  let [navbarOption, setNavbarOption] = useState("all");
+  let [navbarOption, setNavbarOption] = useState(
+    LocalStorage.get("searchOption", "all")
+  );
   let navbarOptions = [
     {
       title: "TẤT CẢ",
@@ -64,6 +66,13 @@ function Search() {
               maxItem={6}
             ></MV>
           )}
+          {dataSearch.artists && (
+            <Artist
+              data={{ title: "NGHỆ SĨ/OA", items: dataSearch.artists }}
+              maxItem={4}
+            ></Artist>
+          )}
+          ),
         </>
       ),
       song: (
@@ -87,7 +96,16 @@ function Search() {
           )}
         </>
       ),
-      artist: <>Nghe Si</>,
+      artist: (
+        <>
+          {dataSearch.artists && (
+            <Artist
+              data={{ title: "NGHỆ SĨ/OA", items: dataSearch.artists }}
+              maxItem={8}
+            ></Artist>
+          )}
+        </>
+      ),
       mv: (
         <>
           {" "}
@@ -112,6 +130,7 @@ function Search() {
                   className={cx(navbarOption == option.id && "active")}
                   key={index}
                   onClick={() => {
+                    LocalStorage.set("searchOption", option.id);
                     setNavbarOption(option.id);
                   }}
                 >
