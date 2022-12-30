@@ -29,14 +29,14 @@ function SongPopper({ song, style }) {
             </div>
           </div>
           <div className={cx("control")}>
-            <a
+            <button
               href={urlMedia.audio(song.encodeId)}
               download={"helo"}
               type="audio/mpeg"
             >
               <span className="material-symbols-outlined">download</span>
               <h6>Tải xuống</h6>
-            </a>
+            </button>
             <button>
               <span className="material-symbols-outlined">lyrics</span>
               <h6>Lời bài hát</h6>

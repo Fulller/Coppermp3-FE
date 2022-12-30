@@ -1,8 +1,14 @@
 import style from "./SearchBox.module.scss";
 import classNames from "classnames/bind";
+import { useState, useContext, useRef } from "react";
+import { Link } from "react-router-dom";
+import { GlobalContext } from "../../../../Component/GlobalState";
 
 let cx = classNames.bind(style);
 function SearchBox() {
+  let [input, setInput] = useState("");
+  let [globalState, dispatch] = useContext(GlobalContext);
+  let searchBtnRef = useRef();
   return (
     <div className={cx("wrapper")}>
       <div className={cx("back-forward")}>
@@ -20,10 +26,28 @@ function SearchBox() {
         </span>
       </div>
       <div className={cx("search")}>
-        <span className="material-symbols-outlined">search</span>
+        <Link
+          to="/search"
+          ref={searchBtnRef}
+          onClick={(e) => {
+            dispatch({ type: "search", payload: { search: input } });
+          }}
+        >
+          <span className="material-symbols-outlined">search</span>
+        </Link>
         <input
           placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát..."
           spellCheck="false"
+          value={input}
+          onKeyDown={(e) => {
+            if (e.key == "Enter") {
+              searchBtnRef.current.click();
+              setInput("");
+            }
+          }}
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
         ></input>
       </div>
     </div>

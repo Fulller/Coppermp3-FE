@@ -64,6 +64,7 @@ function GlobalState({ children }) {
     prevSong: null,
     nextSong: null,
     isPlay: false,
+    search: "",
   });
   function globalReducer(state, action) {
     let newState = {};
@@ -122,6 +123,12 @@ function GlobalState({ children }) {
         newState = {
           ...state,
           isPlay: action.payload.isPlay,
+        };
+        break;
+      case "search":
+        newState = {
+          ...state,
+          search: action.payload.search,
         };
         break;
     }

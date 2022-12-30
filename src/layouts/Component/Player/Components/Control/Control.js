@@ -61,10 +61,12 @@ function Control({ globalState, dispatch, style, showDetailPlayer }) {
       }
     };
     document.documentElement.onkeydown = function (e) {
-      e.preventDefault();
       switch (e.key) {
         case " ": {
-          playDom.click();
+          if (e.target == document.body) {
+            e.preventDefault();
+            playDom.click();
+          }
           break;
         }
         case ",": {
@@ -109,6 +111,7 @@ function Control({ globalState, dispatch, style, showDetailPlayer }) {
           break;
         }
       }
+      // return !(e.keyCode == 32);
     };
   }, []);
 
