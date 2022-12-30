@@ -9,17 +9,19 @@ import nomalizeTime from "../../../tools/nomalizeTime";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
-function Songs({ data, maxSong }) {
+function Songs({ data, maxItem, column = 2 }) {
   let [globalState, dispatch] = useContext(GlobalContext);
-  let [popperIsShow, setPopperIsShow] = useState("all-1");
 
   return (
     <div className={`${cxCpn("view-item")} ${cx("wrapper")}`}>
       <h3>{data.title}</h3>
-      <div className={cx("container")}>
+      <div
+        className={cx("container")}
+        style={{ gridTemplateColumns: `repeat(${column}, 1fr)` }}
+      >
         {data.items.map((song, index) => {
-          if (maxSong > 0) {
-            if (index >= maxSong) {
+          if (maxItem) {
+            if (index >= maxItem) {
               return;
             }
           }

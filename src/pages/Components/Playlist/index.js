@@ -7,17 +7,14 @@ import { Link } from "react-router-dom";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
-function Playlist({ data }) {
+function Playlist({ data, maxItem = 4 }) {
   let [globalState, dispatch] = useContext(GlobalContext);
   return (
     <div className={`${cxCpn("view-item")} ${cx("wrapper")}`}>
       <h3>{data.title.toUpperCase()}</h3>
       <div className={cx("playlists")}>
         {data.items.map((playlist, index) => {
-          if (
-            index >= data.items.length - (data.items.length % 4) ||
-            index >= 8
-          ) {
+          if (index >= maxItem) {
             return;
           }
           return (

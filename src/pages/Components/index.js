@@ -5,6 +5,7 @@ import RTchar from "./RTchar";
 import NewReleaseChart from "./NewReleaseChart";
 import ArtistSpotlight from "./ArtistSpotlight";
 import Songs from "./Songs";
+import MV from "./MV";
 export {
   Banner,
   NewRelease,
@@ -13,4 +14,5 @@ export {
   NewReleaseChart,
   ArtistSpotlight,
   Songs,
+  MV,
 };
