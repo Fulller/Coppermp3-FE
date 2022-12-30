@@ -4,6 +4,7 @@ import classNames from "classnames/bind";
 import { GlobalContext } from "../../../Component/GlobalState";
 import { useContext } from "react";
 import services from "../../../services";
+import AllBtn from "../AllBtn";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -19,7 +20,10 @@ function NewReleaseChart({ data }) {
   }
   return (
     <div className={`${cxCpn("view-item")} ${cx("wrapper")}`}>
-      <h3>{data.title}</h3>
+      <div className={cxCpn("heading")}>
+        <h3>{data.title}</h3>
+        <AllBtn></AllBtn>
+      </div>
       <div className={cx("content")}>
         {data.items.map((item, index) => {
           if (index >= 3) {

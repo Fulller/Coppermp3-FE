@@ -27,9 +27,34 @@
     max-width: 100%;
     width: 920px;
 
-    h3 {
-      font-size: 20;
-      margin-bottom: 20px;
+    .heading {
+      display: flex;
+      justify-content: space-between;
+
+      h3 {
+        font-size: 20;
+        margin-bottom: 20px;
+      }
+      .allbtn {
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          p,
+          span {
+            color: rgb(131, 131, 252);
+          }
+        }
+
+        p,
+        span {
+          color: rgba(255, 255, 255, 0.5);
+        }
+        p {
+          font-size: 12px;
+          font-weight: 600;
+        }
+      }
     }
   }
 }

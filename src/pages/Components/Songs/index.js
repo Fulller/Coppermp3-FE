@@ -6,15 +6,19 @@ import { useContext, useState } from "react";
 import Thumbnail, { cxThumbnail } from "../Thumbnail";
 import SongPopper from "../../../Component/SongPopper";
 import nomalizeTime from "../../../tools/nomalizeTime";
+import AllBtn from "../AllBtn";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
-function Songs({ data, maxItem, column = 2 }) {
+function Songs({ data, maxItem, column = 2, allBtnHandle }) {
   let [globalState, dispatch] = useContext(GlobalContext);
 
   return (
     <div className={`${cxCpn("view-item")} ${cx("wrapper")}`}>
-      <h3>{data.title}</h3>
+      <div className={cxCpn("heading")}>
+        <h3>{data.title}</h3>
+        <AllBtn hanleClick={allBtnHandle}></AllBtn>
+      </div>
       <div
         className={cx("container")}
         style={{ gridTemplateColumns: `repeat(${column}, 1fr)` }}

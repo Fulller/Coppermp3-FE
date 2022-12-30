@@ -53,23 +53,35 @@ function Search() {
             <Songs
               data={{ title: "Bài Hát", items: dataSearch.songs }}
               maxItem={8}
+              allBtnHandle={function () {
+                setNavbarOption("song");
+              }}
             ></Songs>
           )}
           {dataSearch.playlists && (
             <Playlist
               data={{ title: "Playlist/Album", items: dataSearch.playlists }}
+              allBtnHandle={function () {
+                setNavbarOption("playlist");
+              }}
             ></Playlist>
           )}
           {dataSearch.videos && (
             <MV
               data={{ title: "MV", items: dataSearch.videos }}
               maxItem={6}
+              allBtnHandle={function () {
+                setNavbarOption("mv");
+              }}
             ></MV>
           )}
           {dataSearch.artists && (
             <Artist
               data={{ title: "NGHỆ SĨ/OA", items: dataSearch.artists }}
               maxItem={4}
+              allBtnHandle={function () {
+                setNavbarOption("artist");
+              }}
             ></Artist>
           )}
           ),

@@ -4,14 +4,18 @@ import classNames from "classnames/bind";
 import { GlobalContext } from "../../../Component/GlobalState";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import AllBtn from "../AllBtn";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
-function Playlist({ data, maxItem = 4 }) {
+function Playlist({ data, maxItem = 4, allBtnHandle }) {
   let [globalState, dispatch] = useContext(GlobalContext);
   return (
     <div className={`${cxCpn("view-item")} ${cx("wrapper")}`}>
-      <h3>{data.title.toUpperCase()}</h3>
+      <div className={cxCpn("heading")}>
+        <h3>{data.title.toUpperCase()}</h3>
+        <AllBtn hanleClick={allBtnHandle}></AllBtn>
+      </div>
       <div className={cx("playlists")}>
         {data.items.map((playlist, index) => {
           if (index >= maxItem) {

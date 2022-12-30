@@ -5,6 +5,7 @@ import Thumbnail, { cxThumbnail } from "../Thumbnail";
 import classNames from "classnames/bind";
 import style from "./NewRelease.module.scss";
 import cpnStyle from "../Components.module.scss";
+import AllBtn from "../AllBtn";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -28,7 +29,10 @@ function NewRelease({ data }) {
   ];
   return (
     <div className={`${cxCpn("view-item")} ${cx("wrapper")}`}>
-      <h3>{data.title.toUpperCase()}</h3>
+      <div className={cxCpn("heading")}>
+        <h3>{data.title.toUpperCase()}</h3>
+        <AllBtn></AllBtn>
+      </div>
       <div className={cx("list-option")}>
         {listOption.map((optional, index) => {
           return (
