@@ -7,17 +7,19 @@ import Thumbnail, { cxThumbnail } from "../Thumbnail";
 import SongPopper from "../../../Component/SongPopper";
 import nomalizeTime from "../../../tools/nomalizeTime";
 import AllBtn from "../AllBtn";
+import MVicon from "../../../Component/MVicon";
+import LyricBtn from "../../../Component/LyricBtn";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
-function Songs({ data, maxItem, column = 2, allBtnHandle }) {
+function Songs({ data, maxItem, column = 2, allBtnHandle, hasAllBtn = false }) {
   let [globalState, dispatch] = useContext(GlobalContext);
 
   return (
     <div className={`${cxCpn("view-item")} ${cx("wrapper")}`}>
       <div className={cxCpn("heading")}>
         <h3>{data.title}</h3>
-        <AllBtn hanleClick={allBtnHandle}></AllBtn>
+        {hasAllBtn && <AllBtn hanleClick={allBtnHandle}></AllBtn>}
       </div>
       <div
         className={cx("container")}
@@ -60,10 +62,10 @@ function Songs({ data, maxItem, column = 2, allBtnHandle }) {
                 <h6>{song.artistsNames}</h6>
               </div>
               <div className={cx("right")}>
-                <div className={cx("feature")}>
-                  <span className={cx("popper")}>
-                    <SongPopper song={song}></SongPopper>
-                  </span>
+                <div className={cx("option")}>
+                  <MVicon data={song}></MVicon>
+                  <LyricBtn data={song} playList={data.items}></LyricBtn>
+                  <SongPopper song={song}></SongPopper>
                 </div>
                 <span className={cx("duration")}>
                   {nomalizeTime(song.duration)}

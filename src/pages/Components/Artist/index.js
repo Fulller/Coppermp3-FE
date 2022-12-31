@@ -27,7 +27,7 @@ function Artist({ data, maxItem = 4, allBtnHandle }) {
                 <img src={artist.thumbnail}></img>
                 <div className={cx("control")}>
                   <button>
-                    <i class="fa-solid fa-shuffle"></i>
+                    <i className="fa-solid fa-shuffle"></i>
                   </button>
                 </div>
               </div>

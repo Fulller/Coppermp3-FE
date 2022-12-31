@@ -13,8 +13,8 @@
       &:hover {
         background-color: rgba(255, 255, 255, 0.1);
         .right {
-          .feature {
-            display: block;
+          .option {
+            display: flex;
           }
           .duration {
             display: none;
@@ -41,11 +41,13 @@
         }
       }
       .right {
+        flex: 1;
         margin-left: auto;
         display: flex;
         align-items: center;
+        justify-content: end;
 
-        .feature {
+        .option {
           display: none;
         }
         .duration {

@@ -106,6 +106,15 @@
 
       &:hover {
         background-color: rgba(227, 142, 244, 0.12);
+        .option {
+          .duration {
+            display: none;
+          }
+          .opitionhover {
+            display: flex;
+            align-items: center;
+          }
+        }
       }
       .thumbnail {
         width: 50px;
@@ -130,12 +139,22 @@
         }
       }
       p,
-      span {
+      .duration {
         display: flex;
         flex-direction: column;
         justify-content: center;
         font-size: 12px;
         color: rgba(255, 255, 255, 0.5);
+      }
+      .option {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 20px;
+
+        .opitionhover {
+          display: none;
+        }
       }
     }
     .active {

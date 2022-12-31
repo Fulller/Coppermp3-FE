@@ -5,6 +5,9 @@ import classNames from "classnames/bind";
 import style from "./Playlist.module.scss";
 import cpnStyle from "../Components/Components.module.scss";
 import Thumbnail, { cxThumbnail } from "../Components/Thumbnail";
+import MVicon from "../../Component/MVicon";
+import SongPopper from "../../Component/SongPopper";
+import LyricBtn from "../../Component/LyricBtn";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -86,7 +89,20 @@ function Playlist() {
                   <h6>{item.artistsNames}</h6>
                 </div>
                 <p>{item.album ? item.album.title : ""}</p>
-                <span>{nomalizeTime(item.duration)}</span>
+                <div className={cx("option")}>
+                  <span className={cx("duration")}>
+                    {nomalizeTime(item.duration)}
+                  </span>
+                  <div className={cx("opitionhover")}>
+                    <MVicon data={item}></MVicon>
+                    <LyricBtn
+                      data={item}
+                      playList={playlistData.song.items}
+                      playListEncodeId={playlistData.encodeId}
+                    ></LyricBtn>
+                    <SongPopper song={item}></SongPopper>
+                  </div>
+                </div>
               </div>
             );
           })}

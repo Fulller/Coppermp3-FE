@@ -11,6 +11,7 @@
   padding: 12px 24px;
   animation: scrollShow 0.4s;
   background-image: radial-gradient(rgb(34, 34, 70), rgb(7, 7, 81));
+  z-index: 1;
   .background {
     opacity: 0.5;
     position: absolute;

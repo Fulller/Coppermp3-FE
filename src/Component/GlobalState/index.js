@@ -2,6 +2,7 @@ import { createContext, useReducer, useRef, useEffect } from "react";
 import LocalStorage from "../../tools/localStorage";
 import urlMedia from "../../tools/urlMedia";
 import domainfe from "../../tools/domainfe";
+import MVview from "../MVview";
 
 let GlobalContext = createContext();
 function GlobalState({ children }) {
@@ -65,6 +66,8 @@ function GlobalState({ children }) {
     nextSong: null,
     isPlay: false,
     search: "",
+    MVview: false,
+    mvEncodeId: "",
   });
   function globalReducer(state, action) {
     let newState = {};
@@ -131,6 +134,18 @@ function GlobalState({ children }) {
           search: action.payload.search,
         };
         break;
+      case "MVview":
+        newState = {
+          ...state,
+          MVview: action.payload.MVview,
+        };
+        break;
+      case "mvEncodeId":
+        newState = {
+          ...state,
+          mvEncodeId: action.payload.mvEncodeId,
+        };
+        break;
     }
     LocalStorage.set("coppermp3", newState);
     return { ...newState };
@@ -156,6 +171,7 @@ function GlobalState({ children }) {
         id="audio"
         src={urlMedia.audio(globalState.currentSong.encodeId, 320)}
       ></audio>
+      <MVview></MVview>
     </GlobalContext.Provider>
   );
 }

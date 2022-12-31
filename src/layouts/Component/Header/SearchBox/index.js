@@ -9,6 +9,7 @@ function SearchBox() {
   let [input, setInput] = useState("");
   let [globalState, dispatch] = useContext(GlobalContext);
   let searchBtnRef = useRef();
+  let inputRef = useRef();
   return (
     <div className={cx("wrapper")}>
       <div className={cx("back-forward")}>
@@ -30,6 +31,7 @@ function SearchBox() {
           to="/search"
           ref={searchBtnRef}
           onClick={(e) => {
+            e.target.blur();
             dispatch({ type: "search", payload: { search: input } });
           }}
         >
@@ -39,8 +41,10 @@ function SearchBox() {
           placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát..."
           spellCheck="false"
           value={input}
+          ref={inputRef}
           onKeyDown={(e) => {
             if (e.key == "Enter") {
+              inputRef.current.blur();
               searchBtnRef.current.click();
               setInput("");
             }

@@ -6,7 +6,7 @@ function AllBtn({ hanleClick }) {
   return (
     <div className={cxCpn("allbtn")} onClick={hanleClick}>
       <p>TẤT CẢ</p>
-      <span class="material-symbols-outlined">chevron_right</span>
+      <span className="material-symbols-outlined">chevron_right</span>
     </div>
   );
 }

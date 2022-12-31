@@ -4,6 +4,8 @@ import { useState, useRef, useEffect, useReducer } from "react";
 import urlMedia from "../../../../../tools/urlMedia";
 import LocalStorage from "../../../../../tools/localStorage";
 import { doc } from "prettier";
+import Popper from "../../../../../Component/Popper";
+import NextPopper from "./NextPopper";
 
 let cx = classNames.bind(style);
 
@@ -191,12 +193,14 @@ function Control({ globalState, dispatch, style, showDetailPlayer }) {
       style={style}
     >
       <div className={cx("control")} ref={controlRef}>
-        <button
-          className={cx(isRandom ? "active" : "")}
-          onClick={handleChangeIsRandom}
-        >
-          <span className="material-symbols-outlined">shuffle</span>
-        </button>
+        <Popper content={"Phát ngẫu nhiên"}>
+          <button
+            className={cx(isRandom ? "active" : "")}
+            onClick={handleChangeIsRandom}
+          >
+            <span className="material-symbols-outlined">shuffle</span>
+          </button>
+        </Popper>
         <button
           onClick={handlePrevBtn}
           className={cx(globalState.prevSong ? "" : "disable")}
@@ -206,18 +210,22 @@ function Control({ globalState, dispatch, style, showDetailPlayer }) {
         <button className={cx("play")} onClick={handlePlaybtn}>
           <span className={cx(["material-symbols-outlined"])}>play_arrow</span>
         </button>
-        <button
-          onClick={handleNextBtn}
-          className={cx(globalState.nextSong ? "" : "disable")}
-        >
-          <span className="material-symbols-outlined">skip_next</span>
-        </button>
-        <button
-          onClick={handleChangeIsReplay}
-          className={cx(isReplay ? "active" : "")}
-        >
-          <span className="material-symbols-outlined">autorenew</span>
-        </button>
+        <NextPopper>
+          <button
+            onClick={handleNextBtn}
+            className={cx(globalState.nextSong ? "" : "disable")}
+          >
+            <span className="material-symbols-outlined">skip_next</span>
+          </button>
+        </NextPopper>
+        <Popper content={"Phát lại"}>
+          <button
+            onClick={handleChangeIsReplay}
+            className={cx(isReplay ? "active" : "")}
+          >
+            <span className="material-symbols-outlined">autorenew</span>
+          </button>
+        </Popper>
       </div>
       <div ref={timeRef} className={cx("time")}>
         <span>{nomalizeTime(LocalStorage.get("timecmp3", 0))}</span>

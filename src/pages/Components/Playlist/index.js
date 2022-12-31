@@ -5,16 +5,17 @@ import { GlobalContext } from "../../../Component/GlobalState";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import AllBtn from "../AllBtn";
+import MVicon from "../../../Component/MVicon";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
-function Playlist({ data, maxItem = 4, allBtnHandle }) {
+function Playlist({ data, maxItem = 4, allBtnHandle, hasAllBtn = false }) {
   let [globalState, dispatch] = useContext(GlobalContext);
   return (
     <div className={`${cxCpn("view-item")} ${cx("wrapper")}`}>
       <div className={cxCpn("heading")}>
         <h3>{data.title.toUpperCase()}</h3>
-        <AllBtn hanleClick={allBtnHandle}></AllBtn>
+        {hasAllBtn && <AllBtn hanleClick={allBtnHandle}></AllBtn>}
       </div>
       <div className={cx("playlists")}>
         {data.items.map((playlist, index) => {

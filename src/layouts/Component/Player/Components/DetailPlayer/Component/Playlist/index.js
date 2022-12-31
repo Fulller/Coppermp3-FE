@@ -27,7 +27,6 @@ function Playlist() {
     }
     let newIndexmainsong = getIndexMainSong();
     let main = document.querySelector("#" + cx("item" + newIndexmainsong));
-    main.scrollIntoViewIfNeeded();
     if (globalState.isPlay) {
       main.innerHTML += `<div  class="${cx("playingAnimation")}">
       <span class="${cx("cl1")}"></span>
@@ -37,8 +36,9 @@ function Playlist() {
       <span class="${cx("cl5")}"></span>
       </div>`;
     }
+    listRef.current.scrollLeft = newIndexmainsong * 400;
     setInterval(() => {
-      main.scrollIntoViewIfNeeded();
+      listRef.current.scrollLeft = newIndexmainsong * 400;
     }, 10000);
   }, [globalState.currentSong]);
 

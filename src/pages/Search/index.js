@@ -56,6 +56,7 @@ function Search() {
               allBtnHandle={function () {
                 setNavbarOption("song");
               }}
+              hasAllBtn={true}
             ></Songs>
           )}
           {dataSearch.playlists && (
@@ -64,6 +65,7 @@ function Search() {
               allBtnHandle={function () {
                 setNavbarOption("playlist");
               }}
+              hasAllBtn={true}
             ></Playlist>
           )}
           {dataSearch.videos && (
@@ -73,6 +75,7 @@ function Search() {
               allBtnHandle={function () {
                 setNavbarOption("mv");
               }}
+              hasAllBtn={true}
             ></MV>
           )}
           {dataSearch.artists && (

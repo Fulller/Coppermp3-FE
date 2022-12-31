@@ -6,6 +6,7 @@ import classNames from "classnames/bind";
 import style from "./NewRelease.module.scss";
 import cpnStyle from "../Components.module.scss";
 import AllBtn from "../AllBtn";
+import MVicon from "../../../Component/MVicon";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -83,7 +84,8 @@ function NewRelease({ data }) {
                 <h4>{song.title}</h4>
                 <h5>{song.artistsNames}</h5>
               </div>
-              <span className={cx("popper")}>
+              <span className={cx("option")}>
+                <MVicon data={song}></MVicon>
                 <SongPopper song={song}></SongPopper>
               </span>
             </div>

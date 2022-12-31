@@ -3,6 +3,8 @@ import classNames from "classnames/bind";
 import { useEffect, useRef, useState } from "react";
 import LocalStorage from "../../../../../tools/localStorage";
 import Headless from "@tippyjs/react/headless";
+import MVicon from "../../../../../Component/MVicon";
+import Popper from "../../../../../Component/Popper";
 
 let cx = classNames.bind(style);
 function Option({
@@ -44,39 +46,44 @@ function Option({
   }, []);
   return (
     <div className={cx("wrapper")}>
-      <button>
-        <span className="material-symbols-outlined">movie</span>
-      </button>
-      <button>
-        <span
-          className="material-symbols-outlined"
-          onClick={() => {
-            LocalStorage.set("detailOptionalcmp3", "lyric");
-            setShowDetailPlayer(!showDetailPlayer);
-          }}
-        >
-          mic_external_on
-        </span>
-      </button>
-      <button onClick={handleOffVolume}>
-        <span className="material-symbols-outlined" ref={volumeIconRef}>
-          volume_up
-        </span>
-      </button>
+      <MVicon data={globalState.currentSong} type="blur"></MVicon>
+      <Popper content={"Xem lời bài hát"}>
+        <button>
+          <span
+            className="material-symbols-outlined"
+            onClick={() => {
+              LocalStorage.set("detailOptionalcmp3", "lyric");
+              setShowDetailPlayer(!showDetailPlayer);
+            }}
+          >
+            mic_external_on
+          </span>
+        </button>
+      </Popper>
+      <Popper content={"Âm lượng"}>
+        <button onClick={handleOffVolume}>
+          <span className="material-symbols-outlined" ref={volumeIconRef}>
+            volume_up
+          </span>
+        </button>
+      </Popper>
       <input
         ref={volumeRef}
         type="range"
         max={100}
         onChange={changeVolume}
       ></input>
-      <button
-        onClick={() => setShowDetailPlayer(!showDetailPlayer)}
-        className={cx("detailBtn")}
-      >
-        <span className={cx(["material-symbols-outlined"])}>
-          keyboard_arrow_up
-        </span>
-      </button>
+      <Popper content={"Pro player"}>
+        <button
+          id="showDetailBtn"
+          onClick={() => setShowDetailPlayer(!showDetailPlayer)}
+          className={cx("detailBtn")}
+        >
+          <span className={cx(["material-symbols-outlined"])}>
+            keyboard_arrow_up
+          </span>
+        </button>
+      </Popper>
     </div>
   );
 }

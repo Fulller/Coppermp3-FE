@@ -20,6 +20,11 @@
     background-color: rgba(255, 255, 255, 0.1);
     padding: 0px 12px;
     border-radius: 100px;
+    transition: all 0.5s;
+    &:focus-within {
+      background-color: rgb(38, 38, 87);
+      transform: scale(1.2) translateX(30px);
+    }
     input {
       font-size: 14px;
       padding: 10px;

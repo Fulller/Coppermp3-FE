@@ -29,13 +29,14 @@
       transition: all 0.3s;
       align-items: center;
 
-      .popper {
+      .option {
+        display: flex;
         margin-left: auto;
         opacity: 0;
       }
       &:hover {
         background-color: rgba(255, 255, 255, 0.1);
-        .popper {
+        .option {
           opacity: 1;
         }
       }
