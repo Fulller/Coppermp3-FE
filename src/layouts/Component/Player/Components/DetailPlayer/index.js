@@ -48,6 +48,8 @@ function Detailplayer({
                 );
               })}
             </div>
+          </div>
+          <div className={cx("container")}>
             <button
               onClick={(e) => {
                 detailPlayerRef.current.className = cx([
@@ -61,8 +63,6 @@ function Detailplayer({
             >
               <span className="material-symbols-outlined">expand_more</span>
             </button>
-          </div>
-          <div className={cx("container")}>
             {optional == "playlist" ? <Playlist></Playlist> : <></>}
             {optional == "lyric" ? <Lyric lyric={lyric}></Lyric> : <></>}
           </div>

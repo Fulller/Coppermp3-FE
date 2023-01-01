@@ -1,12 +1,24 @@
 import style from "./MVitem.module.scss";
 import classNames from "classnames/bind";
 import nomalizeTime from "../../../../tools/nomalizeTime";
+import { GlobalContext } from "../../../../Component/GlobalState";
+import { useContext } from "react";
 
 let cx = classNames.bind(style);
 function MVitem({ mv, key }) {
+  let [globalState, dispatch] = useContext(GlobalContext);
   return (
     <div className={cx("mv")} key={key}>
-      <div className={cx("thumbnail")}>
+      <div
+        className={cx("thumbnail")}
+        onClick={() => {
+          dispatch({
+            type: "mvEncodeId",
+            payload: { mvEncodeId: mv.encodeId },
+          });
+          dispatch({ type: "MVview", payload: { MVview: true } });
+        }}
+      >
         <div className={cx("control")}>
           <button>
             <i className="fa-solid fa-play"></i>

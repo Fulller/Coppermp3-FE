@@ -29,7 +29,9 @@ function Control({ globalState, dispatch, style, showDetailPlayer }) {
     audio = document.querySelector("audio");
     audio.currentTime = LocalStorage.get("timecmp3", 0);
     audio.oncanplaythrough = function () {
-      audio.play();
+      if (!globalState.MVview) {
+        audio.play();
+      }
     };
     audio.onload = function () {
       dispatch({ type: "isPlay", payload: { isPlay: false } });
@@ -58,11 +60,16 @@ function Control({ globalState, dispatch, style, showDetailPlayer }) {
         if (LocalStorage.get("isRandomcmp3", false)) {
           randomPlaySong();
         } else {
-          nextDom.click();
+          document.querySelector("#nextBtn").click();
+          // nextDom.click();
         }
       }
     };
     document.documentElement.onkeydown = function (e) {
+      if (globalState.MVview) {
+        e.preventDefault();
+        return;
+      }
       switch (e.key) {
         case " ": {
           if (e.target == document.body) {
@@ -113,7 +120,6 @@ function Control({ globalState, dispatch, style, showDetailPlayer }) {
           break;
         }
       }
-      // return !(e.keyCode == 32);
     };
   }, []);
 
@@ -214,6 +220,7 @@ function Control({ globalState, dispatch, style, showDetailPlayer }) {
           <button
             onClick={handleNextBtn}
             className={cx(globalState.nextSong ? "" : "disable")}
+            id="nextBtn"
           >
             <span className="material-symbols-outlined">skip_next</span>
           </button>
