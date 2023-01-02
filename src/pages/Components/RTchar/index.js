@@ -5,6 +5,7 @@ import { GlobalContext } from "../../../Component/GlobalState";
 import { useContext } from "react";
 import services from "../../../services";
 import Thumbnail, { cxThumbnail } from "../../Components/Thumbnail";
+import { Link } from "react-router-dom";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -57,6 +58,9 @@ function RTchar({ data }) {
               </div>
             );
           })}
+          <Link className={cx("moreBtn")} to="/zingchar">
+            Xem thêm
+          </Link>
         </div>
         <div className={cx("right")}></div>
       </div>

@@ -7,9 +7,8 @@ let cx = classNames.bind(style);
 function Thumbnail({
   size,
   src,
-  fontSize = 30,
+  fontSize = 20,
   dataSong,
-  active,
   playList,
   playListEncodeId,
 }) {
@@ -17,7 +16,10 @@ function Thumbnail({
   let audioDom = null;
 
   function Control() {
-    if (active && globalState.isPlay) {
+    if (
+      globalState.currentSong.encodeId == dataSong.encodeId &&
+      globalState.isPlay
+    ) {
       return (
         <div className={cx("animatePlay")}>
           <span className={cx("cl1")}></span>
@@ -29,12 +31,7 @@ function Thumbnail({
       );
     } else {
       return (
-        <span
-          className="material-symbols-outlined"
-          style={{ fontSize: fontSize }}
-        >
-          play_arrow
-        </span>
+        <i className="fa-solid fa-play" style={{ fontSize: fontSize }}></i>
       );
     }
   }
@@ -64,3 +61,27 @@ function Thumbnail({
 }
 export { cx as cxThumbnail };
 export default Thumbnail;
+
+{
+  /* <Thumbnail
+  size={50}
+  src={item.thumbnail}
+  dataSong={item}
+  playList={data}
+></Thumbnail>;
+className={
+  cx([
+    "item",
+    globalState.currentSong.encodeId == item.encodeId
+      ? "active"
+      : "",
+  ]) +
+  " " +
+  cxThumbnail([
+    "item",
+    globalState.currentSong.encodeId == item.encodeId
+      ? "active"
+      : "",
+  ])
+} */
+}

@@ -7,11 +7,22 @@ let cx = classNames.bind(style);
 function Playlist() {
   let [globalState, dispatch] = useContext(GlobalContext);
   let listRef = useRef();
+  let newIndexmainsong = useRef();
   function handleScrollBack() {
     listRef.current.scrollLeft -= 400;
+    setTimeout(() => {
+      if (listRef.current) {
+        listRef.current.scrollLeft = newIndexmainsong.current * 400;
+      }
+    }, 10000);
   }
   function handleScrollForward() {
     listRef.current.scrollLeft += 400;
+    setTimeout(() => {
+      if (listRef.current) {
+        listRef.current.scrollLeft = newIndexmainsong.current * 400;
+      }
+    }, 10000);
   }
   useEffect(() => {
     function getIndexMainSong() {
@@ -25,8 +36,10 @@ function Playlist() {
       }
       return 0;
     }
-    let newIndexmainsong = getIndexMainSong();
-    let main = document.querySelector("#" + cx("item" + newIndexmainsong));
+    newIndexmainsong.current = getIndexMainSong();
+    let main = document.querySelector(
+      "#" + cx("item" + newIndexmainsong.current)
+    );
     if (globalState.isPlay) {
       main.innerHTML += `<div  class="${cx("playingAnimation")}">
       <span class="${cx("cl1")}"></span>
@@ -36,10 +49,15 @@ function Playlist() {
       <span class="${cx("cl5")}"></span>
       </div>`;
     }
-    listRef.current.scrollLeft = newIndexmainsong * 400;
-    setInterval(() => {
-      listRef.current.scrollLeft = newIndexmainsong * 400;
-    }, 10000);
+    function ScrollLeft() {
+      if (listRef.current) {
+        listRef.current.scrollLeft = newIndexmainsong.current * 400;
+      }
+    }
+    ScrollLeft();
+    return () => {
+      clearInterval(ScrollLeft);
+    };
   }, [globalState.currentSong]);
 
   return (
@@ -72,6 +90,7 @@ function Playlist() {
               id={cx("item" + index)}
             >
               <img src={song.thumbnailM}></img>
+              <div className={cx("title")}>{song.title}</div>
               <div
                 className={cx("control")}
                 onClick={() => {

@@ -1,0 +1,103 @@
+.wrapper {
+  margin-top: 0 !important;
+  .title {
+    font-size: 40px;
+    padding: 12px 0px;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .item {
+      width: 100%;
+      display: flex;
+      padding: 4px 16px;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+
+        .option {
+          .unhover {
+            display: none;
+          }
+          .hover {
+            display: flex;
+          }
+        }
+      }
+
+      .rating {
+        font-size: 30px;
+        color: transparent;
+        font-weight: 900;
+        width: 60px;
+        text-align: center;
+        -webkit-text-stroke: 1px rgba(224, 217, 248, 0.4);
+      }
+      .rating1 {
+        -webkit-text-stroke: 1px rgb(59, 0, 254);
+      }
+      .rating2 {
+        -webkit-text-stroke: 1px rgb(111, 255, 0);
+      }
+      .rating3 {
+        -webkit-text-stroke: 1px rgb(255, 0, 0);
+      }
+      .space {
+        padding: 0px 8px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .info {
+        height: 100%;
+        display: flex;
+        flex: 2;
+        align-items: center;
+        .title {
+          padding-left: 8px;
+
+          h5 {
+            font-size: 15px;
+            margin-bottom: 6px;
+          }
+          h6 {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+          }
+        }
+      }
+      .album {
+        flex: 1;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 400;
+      }
+      .option {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        .unhover {
+          font-size: 12px;
+          color: rgba(255, 255, 255, 0.5);
+          font-weight: 400;
+        }
+        .hover {
+          display: none;
+        }
+      }
+    }
+    .seeAll {
+      margin-top: 12px;
+      border: 1px solid white;
+      padding: 8px 16px;
+      border-radius: 50px;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}

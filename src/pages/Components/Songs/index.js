@@ -53,7 +53,6 @@ function Songs({ data, maxItem, column = 2, allBtnHandle, hasAllBtn = false }) {
               <Thumbnail
                 src={song.thumbnail}
                 dataSong={song}
-                active={globalState.currentSong.encodeId == song.encodeId}
                 size={50}
                 playList={data.items}
               ></Thumbnail>

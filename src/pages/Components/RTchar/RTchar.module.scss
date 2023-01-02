@@ -31,12 +31,14 @@
     .left {
       display: flex;
       flex-direction: column;
+      width: 50%;
+      align-items: center;
 
       .item {
+        width: 100%;
         padding: 10px;
         margin-bottom: 10px;
         align-items: center;
-        width: 50%;
         border-radius: 8px;
         background-color: rgba(255, 255, 255, 0.1);
         display: flex;
@@ -87,6 +89,17 @@
             font-weight: 400;
             color: rgba(255, 255, 255, 0.3);
           }
+        }
+      }
+      .moreBtn {
+        border: 1px solid white;
+        text-align: center;
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-size: 14px;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
         }
       }
     }

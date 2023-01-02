@@ -51,6 +51,7 @@ function Detailplayer({
           </div>
           <div className={cx("container")}>
             <button
+              className={cx("hideBtn")}
               onClick={(e) => {
                 detailPlayerRef.current.className = cx([
                   "active",
