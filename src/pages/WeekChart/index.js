@@ -3,11 +3,14 @@ import cpnStyle from "../Components/Components.module.scss";
 import services from "../../services";
 import { useEffect, useState } from "react";
 import Char from "../Components/Char";
-import WeekChart from "../Components/WeekChart";
+import LocalStorage from "../../tools/localStorage";
 
 let cxCpn = classNames.bind(cpnStyle);
-function ZingChar() {
+function WeekChart() {
   let [data, setData] = useState(null);
+  let [areaOption, setAreaOption] = useState(
+    LocalStorage.get("WeekChartAreacmp3", "vn")
+  );
   useEffect(() => {
     async function getData() {
       setData(await services.getChartHome());
@@ -16,14 +19,8 @@ function ZingChar() {
   }, []);
   return (
     <div className={cxCpn("wrapper")}>
-      {data && <Char data={data.RTChart.items} title={"#zingchar"}></Char>}
-      {data && (
-        <WeekChart
-          data={data.weekChart}
-          title={"Bảng Xếp Hạng Tuần"}
-        ></WeekChart>
-      )}
+      <h3>{areaOption}</h3>
     </div>
   );
 }
-export default ZingChar;
+export default WeekChart;

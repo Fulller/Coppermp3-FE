@@ -25,7 +25,7 @@ function Sidebar() {
       icon: <span className="material-symbols-outlined">monitoring</span>,
       title: "#zingchart",
       id: "zingchart",
-      link: "/discovery",
+      link: "/zingchart",
     },
     {
       icon: <span className="material-symbols-outlined">music_note</span>,

@@ -58,7 +58,7 @@ function RTchar({ data }) {
               </div>
             );
           })}
-          <Link className={cx("moreBtn")} to="/zingchar">
+          <Link className={cx("moreBtn")} to="/zingchart">
             Xem thêm
           </Link>
         </div>

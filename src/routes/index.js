@@ -4,6 +4,7 @@ import Signin from "../pages/Signin";
 import Playlist from "../pages/Playlist";
 import Search from "../pages/Search";
 import ZingChar from "../pages/ZingChar";
+import WeekChart from "../pages/WeekChart";
 
 import Mainlayout from "../layouts/Mainlayout";
 let publicRoute = [
@@ -13,6 +14,7 @@ let publicRoute = [
   { path: "/signin", element: Signin },
   { path: "/playlist", element: Playlist, layout: Mainlayout },
   { path: "/search", element: Search, layout: Mainlayout },
-  { path: "/zingChar", element: ZingChar, layout: Mainlayout },
+  { path: "/zingchart", element: ZingChar, layout: Mainlayout },
+  { path: "/weekchart", element: WeekChart, layout: Mainlayout },
 ];
 export { publicRoute };

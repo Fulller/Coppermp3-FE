@@ -19,7 +19,7 @@ function Char({ data, title }) {
       <h2 className={cx("title")}>{title}</h2>
       <div className={cx("content")}>
         {data.map((item, index) => {
-          if (!fullItem && index >= 5) {
+          if (!fullItem && index >= 10) {
             return;
           }
           let classRating = ["rating"];
@@ -83,7 +83,7 @@ function Char({ data, title }) {
             setFullItem(!fullItem);
           }}
         >
-          {fullItem ? "Thu gọn" : "Xem tất cả"}
+          {fullItem ? "Thu gọn" : "Xem top 100"}
         </button>
       </div>
     </div>
