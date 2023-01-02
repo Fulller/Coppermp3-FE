@@ -11,9 +11,9 @@ import SongPopper from "../../../Component/SongPopper";
 
 let cxCpn = classNames.bind(cpnStyle);
 let cx = classNames.bind(style);
-function Char({ data, title }) {
+function Char({ data, title, full = false, type = "type1" }) {
   let [globalState, dispatch] = useContext(GlobalContext);
-  let [fullItem, setFullItem] = useState(false);
+  let [fullItem, setFullItem] = useState(full);
   return (
     <div className={`${cxCpn("view-item")} ${cx("wrapper")}`}>
       <h2 className={cx("title")}>{title}</h2>
@@ -77,14 +77,16 @@ function Char({ data, title }) {
             </div>
           );
         })}
-        <button
-          className={cx("seeAll")}
-          onClick={() => {
-            setFullItem(!fullItem);
-          }}
-        >
-          {fullItem ? "Thu gọn" : "Xem top 100"}
-        </button>
+        {type == "type1" && (
+          <button
+            className={cx("seeAll")}
+            onClick={() => {
+              setFullItem(!fullItem);
+            }}
+          >
+            {fullItem ? "Thu gọn" : "Xem top 100"}
+          </button>
+        )}
       </div>
     </div>
   );
