@@ -43,13 +43,6 @@
         font-size: 20px;
         border-radius: 12px 12px 0px 0px;
         transition: all 1s;
-
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        text-overflow: clip;
-        color: rgba(255, 255, 255, 0.8);
-        z-index: 2;
       }
       .control {
         opacity: 0;

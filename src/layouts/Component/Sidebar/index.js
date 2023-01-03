@@ -30,8 +30,8 @@ function Sidebar() {
     {
       icon: <span className="material-symbols-outlined">music_note</span>,
       title: "Nhạc mới",
-      id: "newsong",
-      link: "/discovery",
+      id: "newReleaseChart",
+      link: "/newReleaseChart",
     },
     {
       icon: <span className="material-symbols-outlined">star</span>,

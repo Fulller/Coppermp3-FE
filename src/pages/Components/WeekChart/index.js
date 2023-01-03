@@ -68,7 +68,7 @@ function WeekChart({ data, title }) {
                   </span>
                   <div className={cx("hover")}>
                     <MVicon data={item}></MVicon>
-                    <LyricBtn data={item} playList={data}></LyricBtn>
+                    <LyricBtn data={item} playList={dataArea.items}></LyricBtn>
                     <SongPopper song={item}></SongPopper>
                   </div>
                 </div>

@@ -32,7 +32,6 @@ function NewRelease({ data }) {
     <div className={`${cxCpn("view-item")} ${cx("wrapper")}`}>
       <div className={cxCpn("heading")}>
         <h3>{data.title.toUpperCase()}</h3>
-        <AllBtn></AllBtn>
       </div>
       <div className={cx("list-option")}>
         {listOption.map((optional, index) => {

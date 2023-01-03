@@ -11,18 +11,27 @@ import {
   ArtistSpotlight,
   WeekChartBanner,
 } from "../Components";
+import { GlobalContext } from "../../Component/GlobalState";
 
 import cpnStyle from "../Components/Components.module.scss";
 let cxCpn = classNames.bind(cpnStyle);
 function Discovery() {
   let [dataDiscovery, setDataDiscovery] = useState({});
+  let [globalState, dispatch] = useContext(GlobalContext);
   useEffect(() => {
+    if (globalState.pageId != "discovery") {
+      dispatch({
+        type: "changePageActiveId",
+        payload: { pageId: "discovery" },
+      });
+    }
     async function fetchData() {
       let newDataHome = await services.getHome();
       setDataDiscovery(newDataHome.items);
     }
     fetchData();
   }, []);
+  console.log(dataDiscovery);
   function DiscoveryView() {
     if (Object.keys(dataDiscovery).length > 0) {
       return dataDiscovery.map((dataBlock, index) => {
