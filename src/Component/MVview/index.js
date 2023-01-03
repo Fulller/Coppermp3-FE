@@ -53,7 +53,7 @@ function MVview() {
                 }}
                 className={cx("closeBtn")}
               >
-                <span class="material-symbols-outlined">close</span>
+                <span className="material-symbols-outlined">close</span>
               </button>
             </Popper>
           </div>
@@ -74,7 +74,7 @@ function MVview() {
                     >
                       <img src={item.thumbnail}></img>
                       <div className={cx("control")}>
-                        <i class="fa-solid fa-play"></i>
+                        <i className="fa-solid fa-play"></i>
                       </div>
                     </div>
                     <div className={cx("info")}>

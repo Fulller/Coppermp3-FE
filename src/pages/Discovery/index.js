@@ -9,6 +9,7 @@ import {
   RTchar,
   NewReleaseChart,
   ArtistSpotlight,
+  WeekChartBanner,
 } from "../Components";
 
 import cpnStyle from "../Components/Components.module.scss";
@@ -38,6 +39,10 @@ function Discovery() {
           case "newReleaseChart":
             return (
               <NewReleaseChart data={dataBlock} key={index}></NewReleaseChart>
+            );
+          case "weekChart":
+            return (
+              <WeekChartBanner data={dataBlock} key={index}></WeekChartBanner>
             );
 
           default:

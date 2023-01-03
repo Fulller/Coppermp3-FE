@@ -8,6 +8,7 @@ import Songs from "./Songs";
 import MV from "./MV";
 import Artist from "./Artist";
 import AllBtn from "./AllBtn";
+import WeekChartBanner from "./WeekChartBanner";
 export {
   Banner,
   NewRelease,
@@ -19,4 +20,5 @@ export {
   MV,
   Artist,
   AllBtn,
+  WeekChartBanner,
 };

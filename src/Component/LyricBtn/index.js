@@ -27,7 +27,7 @@ function LyricBtn({ data, playList, playListEncodeId }) {
           document.querySelector("#showDetailBtn").click();
         }}
       >
-        <i class="fa-solid fa-microphone-lines"></i>
+        <i className="fa-solid fa-microphone-lines"></i>
       </button>
     </Popper>
   );
