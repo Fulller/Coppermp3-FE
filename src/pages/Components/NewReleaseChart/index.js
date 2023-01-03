@@ -22,7 +22,7 @@ function NewReleaseChart({ data }) {
     <div className={`${cxCpn("view-item")} ${cx("wrapper")}`}>
       <div className={cxCpn("heading")}>
         <h3>{data.title}</h3>
-        <AllBtn></AllBtn>
+        <AllBtn to="/newReleaseChart"></AllBtn>
       </div>
       <div className={cx("content")}>
         {data.items.map((item, index) => {
