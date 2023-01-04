@@ -6,6 +6,7 @@ import { useContext } from "react";
 import services from "../../../services";
 import Thumbnail, { cxThumbnail } from "../../Components/Thumbnail";
 import { Link } from "react-router-dom";
+import LinkArtistName from "../../../Component/LinkArtistName";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -53,7 +54,7 @@ function RTchar({ data }) {
                 ></Thumbnail>
                 <div className={cx("info")}>
                   <h5>{item.title}</h5>
-                  <h6>{item.artistsNames}</h6>
+                  <LinkArtistName data={item.artists}></LinkArtistName>
                 </div>
               </div>
             );

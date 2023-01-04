@@ -8,6 +8,7 @@ import Thumbnail, { cxThumbnail } from "../Components/Thumbnail";
 import MVicon from "../../Component/MVicon";
 import SongPopper from "../../Component/SongPopper";
 import LyricBtn from "../../Component/LyricBtn";
+import LinkArtistName from "../../Component/LinkArtistName";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -86,7 +87,7 @@ function Playlist() {
                 ></Thumbnail>
                 <div className={cx("info")}>
                   <h5>{item.title}</h5>
-                  <h6>{item.artistsNames}</h6>
+                  <LinkArtistName data={item.artists}></LinkArtistName>
                 </div>
                 <p>{item.album ? item.album.title : ""}</p>
                 <div className={cx("option")}>

@@ -68,6 +68,7 @@ function GlobalState({ children }) {
     search: "",
     MVview: false,
     mvEncodeId: "",
+    artistName: "ERIK",
   });
   function globalReducer(state, action) {
     let newState = {};
@@ -144,6 +145,12 @@ function GlobalState({ children }) {
         newState = {
           ...state,
           mvEncodeId: action.payload.mvEncodeId,
+        };
+        break;
+      case "artistName":
+        newState = {
+          ...state,
+          artistName: action.payload.artistName,
         };
         break;
     }

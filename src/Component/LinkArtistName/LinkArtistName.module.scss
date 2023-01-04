@@ -1,0 +1,11 @@
+.wrapper {
+  .item {
+    color: rgba(255, 255, 255, 0.489);
+    font-weight: 400;
+
+    &:hover {
+      color: rgb(114, 114, 239);
+      text-decoration: underline;
+    }
+  }
+}

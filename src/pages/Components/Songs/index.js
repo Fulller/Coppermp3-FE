@@ -9,6 +9,7 @@ import nomalizeTime from "../../../tools/nomalizeTime";
 import AllBtn from "../AllBtn";
 import MVicon from "../../../Component/MVicon";
 import LyricBtn from "../../../Component/LyricBtn";
+import LinkArtistName from "../../../Component/LinkArtistName";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -58,7 +59,7 @@ function Songs({ data, maxItem, column = 2, allBtnHandle, hasAllBtn = false }) {
               ></Thumbnail>
               <div className={cx("info")}>
                 <h5>{song.title}</h5>
-                <h6>{song.artistsNames}</h6>
+                <LinkArtistName data={song.artists}></LinkArtistName>
               </div>
               <div className={cx("right")}>
                 <div className={cx("option")}>

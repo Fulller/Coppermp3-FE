@@ -6,6 +6,7 @@ import Search from "../pages/Search";
 import ZingChar from "../pages/ZingChar";
 import WeekChart from "../pages/WeekChart";
 import NewReleaseChart from "../pages/NewReleaseChart";
+import Artist from "../pages/Artist";
 
 import Mainlayout from "../layouts/Mainlayout";
 let publicRoute = [
@@ -22,5 +23,6 @@ let publicRoute = [
     element: NewReleaseChart,
     layout: Mainlayout,
   },
+  { path: "/artist", element: Artist, layout: Mainlayout },
 ];
 export { publicRoute };

@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import AllBtn from "../AllBtn";
 import MVicon from "../../../Component/MVicon";
+import LinkArtistName from "../../../Component/LinkArtistName";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);

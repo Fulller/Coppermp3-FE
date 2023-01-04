@@ -5,6 +5,7 @@ import { GlobalContext } from "../../../Component/GlobalState";
 import { useContext } from "react";
 import services from "../../../services";
 import AllBtn from "../AllBtn";
+import LinkArtistName from "../../../Component/LinkArtistName";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -40,7 +41,7 @@ function NewReleaseChart({ data }) {
               </div>
               <div className={cx("info")}>
                 <h5>{item.title}</h5>
-                <h6>{item.artistsNames}</h6>
+                <LinkArtistName data={item.artists}></LinkArtistName>
                 <p>#{index + 1}</p>
               </div>
             </div>

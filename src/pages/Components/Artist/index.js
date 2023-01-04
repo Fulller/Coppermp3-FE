@@ -23,7 +23,15 @@ function Artist({ data, maxItem = 4, allBtnHandle }) {
           }
           return (
             <div className={cx("artist")} key={index}>
-              <div className={cx("thumbnail")}>
+              <div
+                className={cx("thumbnail")}
+                onClick={() => {
+                  dispatch({
+                    type: "artistName",
+                    payload: { artistName: artist.alias },
+                  });
+                }}
+              >
                 <img src={artist.thumbnail}></img>
                 <div className={cx("control")}>
                   <button>
@@ -32,7 +40,16 @@ function Artist({ data, maxItem = 4, allBtnHandle }) {
                 </div>
               </div>
               <div className={cx("info")}>
-                <h5>{artist.name}</h5>
+                <h5
+                  onClick={() => {
+                    dispatch({
+                      type: "artistName",
+                      payload: { artistName: artist.alias },
+                    });
+                  }}
+                >
+                  {artist.name}
+                </h5>
                 <h6>{artist.totalFollow} quan tâm</h6>
               </div>
             </div>

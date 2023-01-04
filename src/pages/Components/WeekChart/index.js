@@ -10,6 +10,7 @@ import LyricBtn from "../../../Component/LyricBtn";
 import SongPopper from "../../../Component/SongPopper";
 import { Link } from "react-router-dom";
 import LocalStorage from "../../../tools/localStorage";
+import LinkArtistName from "../../../Component/LinkArtistName";
 
 let cxCpn = classNames.bind(cpnStyle);
 let cx = classNames.bind(style);
@@ -58,7 +59,7 @@ function WeekChart({ data, title }) {
                   ></Thumbnail>
                   <div className={cx("title")}>
                     <h5>{item.title}</h5>
-                    <h6>{item.artistsNames}</h6>
+                    <LinkArtistName data={item.artists}></LinkArtistName>
                   </div>
                 </div>
 

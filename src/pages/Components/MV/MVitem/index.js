@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import nomalizeTime from "../../../../tools/nomalizeTime";
 import { GlobalContext } from "../../../../Component/GlobalState";
 import { useContext } from "react";
+import LinkArtistName from "../../../../Component/LinkArtistName";
 
 let cx = classNames.bind(style);
 function MVitem({ mv, key }) {
@@ -32,7 +33,7 @@ function MVitem({ mv, key }) {
           <img src={mv.artist.thumbnail}></img>
           <div>
             <h5>{mv.title}</h5>
-            <h6>{mv.artistsNames}</h6>
+            <LinkArtistName data={mv.artists}></LinkArtistName>
           </div>
         </div>
       )}

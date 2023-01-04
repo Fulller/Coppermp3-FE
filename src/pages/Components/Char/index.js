@@ -8,6 +8,7 @@ import nomalizeTime from "../../../tools/nomalizeTime";
 import MVicon from "../../../Component/MVicon";
 import LyricBtn from "../../../Component/LyricBtn";
 import SongPopper from "../../../Component/SongPopper";
+import LinkArtistName from "../../../Component/LinkArtistName";
 
 let cxCpn = classNames.bind(cpnStyle);
 let cx = classNames.bind(style);
@@ -58,7 +59,7 @@ function Char({ data, title, full = false, type = "type1" }) {
                 ></Thumbnail>
                 <div className={cx("title")}>
                   <h5>{item.title}</h5>
-                  <h6>{item.artistsNames}</h6>
+                  <LinkArtistName data={item.artists}></LinkArtistName>
                 </div>
               </div>
               <div className={cx("album")}>

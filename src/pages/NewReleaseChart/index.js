@@ -26,7 +26,7 @@ function NewReleaseChart() {
   }, []);
 
   return (
-    <div className={cxCpn("wrapper") + " " + cx("wrapper")}>
+    <div className={cxCpn(["wrapper", "padding"]) + " " + cx("wrapper")}>
       <h2>Nhạc mới</h2>
       {data && <Char data={data.newRelease} full={true} type="type2"></Char>}
     </div>
