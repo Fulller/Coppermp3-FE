@@ -7,6 +7,7 @@ import ZingChar from "../pages/ZingChar";
 import WeekChart from "../pages/WeekChart";
 import NewReleaseChart from "../pages/NewReleaseChart";
 import Artist from "../pages/Artist";
+import Top100 from "../pages/Top100";
 
 import Mainlayout from "../layouts/Mainlayout";
 let publicRoute = [
@@ -24,5 +25,6 @@ let publicRoute = [
     layout: Mainlayout,
   },
   { path: "/artist", element: Artist, layout: Mainlayout },
+  { path: "/top100", element: Top100, layout: Mainlayout },
 ];
 export { publicRoute };

@@ -11,13 +11,13 @@ function Sidebar() {
   let listControl = [
     {
       icon: <span className="material-symbols-outlined">library_music</span>,
-      title: "Cá nhân",
+      title: "Cá Nhân",
       id: "home",
       link: "/discovery",
     },
     {
       icon: <span className="material-symbols-outlined">album</span>,
-      title: "Khám phá",
+      title: "Khám Phá",
       id: "discovery",
       link: "/discovery",
     },
@@ -29,7 +29,7 @@ function Sidebar() {
     },
     {
       icon: <span className="material-symbols-outlined">music_note</span>,
-      title: "Nhạc mới",
+      title: "Nhạc Mới",
       id: "newReleaseChart",
       link: "/newReleaseChart",
     },
@@ -37,7 +37,7 @@ function Sidebar() {
       icon: <span className="material-symbols-outlined">star</span>,
       title: "Top 100",
       id: "top100",
-      link: "/discovery",
+      link: "/top100",
     },
     {
       icon: <span className="material-symbols-outlined">movie</span>,
@@ -50,7 +50,9 @@ function Sidebar() {
   return (
     <div className={cx("wrapper")}>
       <header>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/ZingMP3logo.svg/555px-ZingMP3logo.svg.png"></img>
+        <Link to={"/discovery"}>
+          <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg"></img>
+        </Link>
       </header>
       <div className={cx("list-control")}>
         {listControl.map((control, index) => {
