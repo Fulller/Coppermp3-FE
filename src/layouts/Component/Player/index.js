@@ -34,7 +34,7 @@ function Player() {
         }
       }}
     >
-      <Link to="/playlist" ref={LinkRef}></Link>
+      <Link to="/playlist" ref={LinkRef} style={{ display: "none" }}></Link>
       <Info globalState={globalState} dispatch={dispatch}></Info>
       <Detailplayer
         globalState={globalState}

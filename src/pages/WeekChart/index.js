@@ -5,6 +5,7 @@ import services from "../../services";
 import { useEffect, useState } from "react";
 import LocalStorage from "../../tools/localStorage";
 import Char from "../Components/Char";
+import Loading from "../Components/Loading";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -25,32 +26,39 @@ function WeekChart() {
     getData();
   }, []);
   return (
-    <div className={cxCpn("wrapper") + " " + cx("wrapper")}>
-      <h2>Bảng Xếp Hạng Tuần</h2>
-      <div className={cx("optionArea")}>
-        {optionAreaS.map((area, index) => {
-          return (
-            <button
-              key={index}
-              className={cx(["option-item", areaOption == area.id && "active"])}
-              onClick={() => {
-                LocalStorage.set("WeekChartAreacmp3", area.id);
-                setAreaOption(area.id);
-              }}
-            >
-              {area.title}
-            </button>
-          );
-        })}
-      </div>
-      {data && (
-        <Char
-          data={data.weekChart[areaOption].items}
-          full={true}
-          type="type2"
-        ></Char>
+    <>
+      {data ? (
+        <div className={cxCpn("wrapper") + " " + cx("wrapper")}>
+          <h2>Bảng Xếp Hạng Tuần</h2>
+          <div className={cx("optionArea")}>
+            {optionAreaS.map((area, index) => {
+              return (
+                <button
+                  key={index}
+                  className={cx([
+                    "option-item",
+                    areaOption == area.id && "active",
+                  ])}
+                  onClick={() => {
+                    LocalStorage.set("WeekChartAreacmp3", area.id);
+                    setAreaOption(area.id);
+                  }}
+                >
+                  {area.title}
+                </button>
+              );
+            })}
+          </div>
+          <Char
+            data={data.weekChart[areaOption].items}
+            full={true}
+            type="type2"
+          ></Char>
+        </div>
+      ) : (
+        <Loading></Loading>
       )}
-    </div>
+    </>
   );
 }
 export default WeekChart;

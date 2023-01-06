@@ -9,12 +9,14 @@ import MVicon from "../../Component/MVicon";
 import SongPopper from "../../Component/SongPopper";
 import LyricBtn from "../../Component/LyricBtn";
 import LinkArtistName from "../../Component/LinkArtistName";
+import LinkAlbum from "../../Component/LinkAlbum";
+import Loading from "../Components/Loading";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
 function Playlist() {
   let [globalState, dispatch] = useContext(GlobalContext);
-  let [playlistData, setPlaylistData] = useState({});
+  let [playlistData, setPlaylistData] = useState(null);
   useEffect(() => {
     async function loadPlaylist() {
       let data = await services.getDetailPlaylist({
@@ -27,7 +29,17 @@ function Playlist() {
   function InfoPlaylist({ data }) {
     return (
       <div className={cx("info")}>
-        <div className={cx(["thumbnail", globalState.isPlay ? "active" : ""])}>
+        <div
+          className={cx([
+            "thumbnail",
+            globalState.isPlay &&
+            data.song.items.some((song) => {
+              return globalState.currentSong.encodeId == song.encodeId;
+            })
+              ? "active"
+              : "",
+          ])}
+        >
           <img src={data.thumbnailM}></img>
         </div>
         <div className={cx("name")}>
@@ -89,7 +101,9 @@ function Playlist() {
                   <h5>{item.title}</h5>
                   <LinkArtistName data={item.artists}></LinkArtistName>
                 </div>
-                <p>{item.album ? item.album.title : ""}</p>
+                <div className={cx("album")}>
+                  <LinkAlbum data={item.album}></LinkAlbum>
+                </div>
                 <div className={cx("option")}>
                   <span className={cx("duration")}>
                     {nomalizeTime(item.duration)}
@@ -113,10 +127,16 @@ function Playlist() {
   }
 
   return (
-    <div className={`${cxCpn("wrapper")} ${cx("wrapper")}`}>
-      <InfoPlaylist data={playlistData}></InfoPlaylist>
-      <ListSong data={playlistData}></ListSong>
-    </div>
+    <>
+      {playlistData ? (
+        <div className={`${cxCpn("wrapper")} ${cx("wrapper")}`}>
+          <InfoPlaylist data={playlistData}></InfoPlaylist>
+          <ListSong data={playlistData}></ListSong>
+        </div>
+      ) : (
+        <Loading></Loading>
+      )}
+    </>
   );
 }
 export default Playlist;

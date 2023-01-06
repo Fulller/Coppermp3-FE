@@ -4,6 +4,7 @@ import classNames from "classnames/bind";
 import { GlobalContext } from "../../../Component/GlobalState";
 import { useContext, useState } from "react";
 import AllBtn from "../AllBtn";
+import { Link } from "react-router-dom";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -33,11 +34,13 @@ function Artist({ data, maxItem = 4, allBtnHandle }) {
                 }}
               >
                 <img src={artist.thumbnail}></img>
-                <div className={cx("control")}>
-                  <button>
-                    <i className="fa-solid fa-shuffle"></i>
-                  </button>
-                </div>
+                <Link to={"/artist"}>
+                  <div className={cx("control")}>
+                    <button>
+                      <i className="fa-solid fa-shuffle"></i>
+                    </button>
+                  </div>
+                </Link>
               </div>
               <div className={cx("info")}>
                 <h5

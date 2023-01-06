@@ -9,6 +9,7 @@ import MV from "./MV";
 import Artist from "./Artist";
 import AllBtn from "./AllBtn";
 import WeekChartBanner from "./WeekChartBanner";
+import Loading from "./Loading";
 export {
   Banner,
   NewRelease,
@@ -21,4 +22,5 @@ export {
   Artist,
   AllBtn,
   WeekChartBanner,
+  Loading,
 };

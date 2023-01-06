@@ -7,6 +7,7 @@ import GlobalState, { GlobalContext } from "../../Component/GlobalState";
 import style from "./Top100.module.scss";
 import LocalStorage from "../../tools/localStorage";
 import cpnStyle from "../Components/Components.module.scss";
+import Loading from "../Components/Loading";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -35,23 +36,29 @@ function Top100() {
     });
   }
   return (
-    <div className={cxCpn(["wrapper"]) + " " + cx("wrapper")}>
-      {data && (
-        <div
-          className={cx("backgroundBanber")}
-          style={{
-            backgroundImage:
-              "url(https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.8.17/static/media/banner-100.33cafe6b.png)",
-          }}
-        >
-          <div className={cx("upper")}>
-            <span className={cx("top")}>TOP</span>
-            <span className={cx("text100")}>100</span>
-          </div>
+    <>
+      {data ? (
+        <div className={cxCpn(["wrapper"]) + " " + cx("wrapper")}>
+          {data && (
+            <div
+              className={cx("backgroundBanber")}
+              style={{
+                backgroundImage:
+                  "url(https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.8.17/static/media/banner-100.33cafe6b.png)",
+              }}
+            >
+              <div className={cx("upper")}>
+                <span className={cx("top")}>TOP</span>
+                <span className={cx("text100")}>100</span>
+              </div>
+            </div>
+          )}
+          {data && <Sections></Sections>}
         </div>
+      ) : (
+        <Loading></Loading>
       )}
-      {data && <Sections></Sections>}
-    </div>
+    </>
   );
 }
 export default Top100;

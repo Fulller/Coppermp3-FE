@@ -1,0 +1,54 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .animatePlay {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 10px;
+    span {
+      border-radius: 4px;
+      width: 8px;
+      height: 0;
+      background-color: rgba(255, 255, 255, 1);
+      animation: updown 1s infinite linear;
+      margin: 0px 8px;
+      opacity: 0.2;
+    }
+    .cl1 {
+      animation-delay: -0.2s;
+      background-color: rgb(247, 131, 131);
+    }
+    .cl2 {
+      animation-delay: -0.4s;
+      background-color: rgb(116, 116, 248);
+    }
+    .cl3 {
+      animation-delay: -0.6s;
+      background-color: rgb(245, 245, 115);
+    }
+    .cl4 {
+      animation-delay: -0.8s;
+      background-color: pink;
+    }
+    .cl5 {
+      animation-delay: -1s;
+      margin-right: 0;
+    }
+
+    @keyframes updown {
+      0% {
+        height: 5px;
+        transform: scaleY(1);
+      }
+      50% {
+        transform: scaleY(10);
+      }
+      100% {
+        height: 5px;
+        transform: scaleY(1);
+      }
+    }
+  }
+}

@@ -2,11 +2,12 @@ import { useState, useRef, useContext, useEffect, memo } from "react";
 import classNames from "classnames/bind";
 import services from "../../services";
 import urlMedia from "../../tools/urlMedia";
-import { Playlist, Songs, MV, Artist } from "../Components";
+import { Playlist, Songs, MV, Artist, Loading } from "../Components";
 import { GlobalContext } from "../../Component/GlobalState";
-import style from "./Search.module.scss";
 import LocalStorage from "../../tools/localStorage";
+import style from "./Search.module.scss";
 import cpnStyle from "../Components/Components.module.scss";
+
 let cxCpn = classNames.bind(cpnStyle);
 let cx = classNames.bind(style);
 function Search() {
@@ -160,9 +161,15 @@ function Search() {
     );
   }
   return (
-    <div className={cxCpn(["wrapper"])}>
-      {dataSearch && <SearchView></SearchView>}
-    </div>
+    <>
+      {dataSearch ? (
+        <div className={cxCpn(["wrapper", "padding"])}>
+          <SearchView></SearchView>
+        </div>
+      ) : (
+        <Loading></Loading>
+      )}
+    </>
   );
 }
 export default Search;

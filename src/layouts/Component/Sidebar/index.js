@@ -28,7 +28,7 @@ function Sidebar() {
       link: "/zingchart",
     },
     {
-      icon: <span className="material-symbols-outlined">music_note</span>,
+      icon: <i className="fa-solid fa-music"></i>,
       title: "Nhạc Mới",
       id: "newReleaseChart",
       link: "/newReleaseChart",
@@ -39,12 +39,16 @@ function Sidebar() {
       id: "top100",
       link: "/top100",
     },
-    {
-      icon: <span className="material-symbols-outlined">movie</span>,
-      title: "MV",
-      id: "mv",
-      link: "/discovery",
-    },
+    // {
+    //   icon: (
+    //     <div className={cx("mvicon")}>
+    //       <button>MV</button>
+    //     </div>
+    //   ),
+    //   title: "MV",
+    //   id: "mv",
+    //   link: "/discovery",
+    // },
   ];
 
   return (
@@ -73,7 +77,7 @@ function Sidebar() {
                   control.id == globalState.pageId ? "active" : "",
                 ])}
               >
-                <span>{control.icon}</span>
+                <span className={cx("icon")}>{control.icon}</span>
                 <span className={cx("title")}>{control.title}</span>
               </div>
             </Link>

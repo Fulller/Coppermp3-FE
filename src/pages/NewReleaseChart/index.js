@@ -6,6 +6,7 @@ import { useEffect, useState, useContext } from "react";
 import LocalStorage from "../../tools/localStorage";
 import Char from "../Components/Char";
 import { GlobalContext } from "../../Component/GlobalState";
+import Loading from "../Components/Loading";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -26,10 +27,18 @@ function NewReleaseChart() {
   }, []);
 
   return (
-    <div className={cxCpn(["wrapper", "padding"]) + " " + cx("wrapper")}>
-      <h2>Nhạc mới</h2>
-      {data && <Char data={data.newRelease} full={true} type="type2"></Char>}
-    </div>
+    <>
+      {data ? (
+        <div className={cxCpn(["wrapper", "padding"]) + " " + cx("wrapper")}>
+          <h2>Nhạc mới</h2>
+          {data && (
+            <Char data={data.newRelease} full={true} type="type2"></Char>
+          )}
+        </div>
+      ) : (
+        <Loading></Loading>
+      )}
+    </>
   );
 }
 export default NewReleaseChart;

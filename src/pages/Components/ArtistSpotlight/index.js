@@ -5,14 +5,13 @@ import cpnStyle from "../Components.module.scss";
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
 function ArtistSpotlight({ data }) {
-  console.log(data);
   return (
     <div className={`${cxCpn("view-item")} ${cx("wrapper")}`}>
       <div className={cx("content")}>
         {data.items.map((item, index) => {
           return (
             <div className={cx("item")} key={index}>
-              <img src={item.thumbnail}></img>
+              <img src={item.thumbnailM}></img>
             </div>
           );
         })}

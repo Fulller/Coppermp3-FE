@@ -93,6 +93,7 @@
       padding: 8px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       grid-template-columns: 50% 35% 15%;
+
       border-radius: 8px;
       span {
         font-size: 12px;
@@ -104,11 +105,12 @@
       display: grid;
       padding: 8px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      grid-template-columns: 10% 40% 40% 10%;
+      grid-template-columns: 10% 40% 35% 15%;
       border-radius: 8px;
 
       &:hover {
         background-color: rgba(227, 142, 244, 0.12);
+
         .option {
           .duration {
             display: none;
@@ -135,6 +137,7 @@
         width: 100%;
         h5 {
           font-weight: 500;
+          max-width: 200px;
         }
         h6 {
           color: rgba(255, 255, 255, 0.5);
@@ -157,6 +160,15 @@
 
         .opitionhover {
           display: none;
+        }
+      }
+      .album {
+        padding: 0px 8px;
+        p {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
         }
       }
     }

@@ -5,6 +5,7 @@ import { useEffect, useState, useContext } from "react";
 import Char from "../Components/Char";
 import WeekChart from "../Components/WeekChart";
 import { GlobalContext } from "../../Component/GlobalState";
+import Loading from "../Components/Loading";
 
 let cxCpn = classNames.bind(cpnStyle);
 function ZingChar() {
@@ -23,15 +24,19 @@ function ZingChar() {
     getData();
   }, []);
   return (
-    <div className={cxCpn("wrapper")}>
-      {data && <Char data={data.RTChart.items} title={"#zingchar"}></Char>}
-      {data && (
-        <WeekChart
-          data={data.weekChart}
-          title={"Bảng Xếp Hạng Tuần"}
-        ></WeekChart>
+    <>
+      {data ? (
+        <div className={cxCpn("wrapper")}>
+          <Char data={data.RTChart.items} title={"#zingchar"}></Char>
+          <WeekChart
+            data={data.weekChart}
+            title={"Bảng Xếp Hạng Tuần"}
+          ></WeekChart>
+        </div>
+      ) : (
+        <Loading></Loading>
       )}
-    </div>
+    </>
   );
 }
 export default ZingChar;

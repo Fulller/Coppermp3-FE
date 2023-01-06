@@ -2,6 +2,7 @@ import { useState, useRef, useContext, useEffect, memo } from "react";
 import classNames from "classnames/bind";
 import services from "../../services";
 import urlMedia from "../../tools/urlMedia";
+import Loading from "../Components/Loading";
 import {
   Banner,
   NewRelease,
@@ -16,7 +17,7 @@ import { GlobalContext } from "../../Component/GlobalState";
 import cpnStyle from "../Components/Components.module.scss";
 let cxCpn = classNames.bind(cpnStyle);
 function Discovery() {
-  let [dataDiscovery, setDataDiscovery] = useState({});
+  let [dataDiscovery, setDataDiscovery] = useState(null);
   let [globalState, dispatch] = useContext(GlobalContext);
   useEffect(() => {
     if (globalState.pageId != "discovery") {
@@ -31,7 +32,6 @@ function Discovery() {
     }
     fetchData();
   }, []);
-  console.log(dataDiscovery);
   function DiscoveryView() {
     if (Object.keys(dataDiscovery).length > 0) {
       return dataDiscovery.map((dataBlock, index) => {
@@ -60,9 +60,15 @@ function Discovery() {
     }
   }
   return (
-    <div className={cxCpn("wrapper")}>
-      <DiscoveryView></DiscoveryView>
-    </div>
+    <>
+      {dataDiscovery ? (
+        <div className={cxCpn("wrapper")}>
+          <DiscoveryView></DiscoveryView>
+        </div>
+      ) : (
+        <Loading></Loading>
+      )}
+    </>
   );
 }
 export default Discovery;

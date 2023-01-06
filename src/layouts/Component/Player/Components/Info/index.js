@@ -2,6 +2,7 @@ import style from "./Info.module.scss";
 import classNames from "classnames/bind";
 import { useEffect, useRef } from "react";
 import SongPopper from "../../../../../Component/SongPopper";
+import LinkArtistName from "../../../../../Component/LinkArtistName";
 
 let cx = classNames.bind(style);
 function Info({ globalState, dispatch }) {
@@ -23,7 +24,7 @@ function Info({ globalState, dispatch }) {
       <img src={cs.thumbnail} ref={thumbnailRef}></img>
       <div className={cx("title-artist")}>
         <span className={cx("title")}>{cs.title}</span>
-        <span className={cx("artist")}>{cs.artistsNames}</span>
+        <LinkArtistName data={cs.artists} fontSize={13}></LinkArtistName>
       </div>
       <span>
         <SongPopper

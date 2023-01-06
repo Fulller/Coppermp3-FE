@@ -6,10 +6,10 @@ import { useContext } from "react";
 import removeVietnameseTones from "../../tools/removeVietnameseTones";
 
 let cx = classNames.bind(style);
-function LinkArtistName({ data, fontSize = 12 }) {
+function LinkArtistName({ data, fontSize = 12, style = {} }) {
   let [globalState, dispatch] = useContext(GlobalContext);
   return (
-    <h5 style={{ fontSize }} className={cx("wrapper")}>
+    <h5 style={{ ...style, fontSize }} className={cx("wrapper")}>
       {data &&
         data.map((artist, index) => {
           let space = "";
