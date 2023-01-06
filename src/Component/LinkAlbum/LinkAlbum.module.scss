@@ -1,8 +1,12 @@
 .wrapper {
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: flex-start;
 
+  p {
+    color: rgba(255, 255, 255, 0.5);
+  }
   &:hover {
     p {
       color: rgb(146, 146, 243) !important;

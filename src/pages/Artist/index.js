@@ -7,6 +7,7 @@ import GlobalState, { GlobalContext } from "../../Component/GlobalState";
 import style from "./Artist.module.scss";
 import LocalStorage from "../../tools/localStorage";
 import cpnStyle from "../Components/Components.module.scss";
+import Loading from "../Components/Loading";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -39,47 +40,52 @@ function ArtistInfo() {
     return data.sections.map((section, index) => {
       switch (section.sectionType) {
         case "song":
-          return <Songs data={section} maxItem={6} hasAllBtn={true}></Songs>;
+          return <Songs data={section} maxItem={48}></Songs>;
         case "playlist":
-          return <Playlist data={section}></Playlist>;
+          return <Playlist data={section} maxItem={16}></Playlist>;
         case "video":
           return <MV data={section} maxItem={3}></MV>;
         case "artist":
-          return <Artist data={section}></Artist>;
+          return <Artist data={section} maxItem={8}></Artist>;
       }
     });
   }
   return (
-    <div ref={wrapperRef} className={cxCpn(["wrapper"]) + " " + cx("wrapper")}>
-      {data && (
-        <div className={cx("backgroundBanber")} style={{ ...style }}>
-          <h1 className={cx("name")}>{data.name}</h1>
-          <h2 className={cx("follow")}>{data.follow} người quan tâm</h2>
-        </div>
-      )}
-      {data && <Sections></Sections>}
-      {data && (
-        <div className={cxCpn("view-item")} style={{ marginBottom: "24px" }}>
-          <div className={cxCpn("heading")}>
-            <h3>Về {data.name}</h3>
+    <>
+      {data ? (
+        <div
+          ref={wrapperRef}
+          className={cxCpn(["wrapper"]) + " " + cx("wrapper")}
+        >
+          <div className={cx("backgroundBanber")} style={{ ...style }}>
+            <h1 className={cx("name")}>{data.name}</h1>
+            <h2 className={cx("follow")}>{data.follow} người quan tâm</h2>
           </div>
-          <div className={cx("container")}>
-            <img src={data.thumbnailM}></img>
-            <div className={cx("biography")}>
-              <p ref={biographyRef}>
-                {biographyRef.current &&
-                  (biographyRef.current.innerHTML =
-                    data.biography || data.sortBiography)}
-              </p>
-              <div className={cx("follow")}>
-                <h4>{data.follow}</h4>
-                <h5>Người quan tâm</h5>
+          <Sections></Sections>
+          <div className={cxCpn("view-item")} style={{ marginBottom: "24px" }}>
+            <div className={cxCpn("heading")}>
+              <h3>Về {data.name}</h3>
+            </div>
+            <div className={cx("container")}>
+              <img src={data.thumbnailM}></img>
+              <div className={cx("biography")}>
+                <p ref={biographyRef}>
+                  {biographyRef.current &&
+                    (biographyRef.current.innerHTML =
+                      data.biography || data.sortBiography)}
+                </p>
+                <div className={cx("follow")}>
+                  <h4>{data.follow}</h4>
+                  <h5>Người quan tâm</h5>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      ) : (
+        <Loading></Loading>
       )}
-    </div>
+    </>
   );
 }
 export default ArtistInfo;

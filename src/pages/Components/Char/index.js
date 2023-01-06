@@ -9,6 +9,7 @@ import MVicon from "../../../Component/MVicon";
 import LyricBtn from "../../../Component/LyricBtn";
 import SongPopper from "../../../Component/SongPopper";
 import LinkArtistName from "../../../Component/LinkArtistName";
+import LinkAlbum from "../../../Component/LinkAlbum";
 
 let cxCpn = classNames.bind(cpnStyle);
 let cx = classNames.bind(style);
@@ -62,9 +63,7 @@ function Char({ data, title, full = false, type = "type1" }) {
                   <LinkArtistName data={item.artists}></LinkArtistName>
                 </div>
               </div>
-              <div className={cx("album")}>
-                {item.album ? item.album.title : ""}
-              </div>
+              <LinkAlbum data={item.album}></LinkAlbum>
               <div className={cx("option")}>
                 <span className={cx("unhover")}>
                   {nomalizeTime(item.duration)}

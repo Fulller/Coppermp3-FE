@@ -13,10 +13,18 @@ import Popper from "../Popper";
 let cx = classNames.bind(style);
 function SongPopper({ song, style }) {
   let [isShow, setIsShow] = useState(false);
+  let [linkmp3, setLinkMp3] = useState(null);
   function handleShowAndHide() {
     setIsShow(!isShow);
   }
-
+  useEffect(() => {
+    if (isShow) {
+      async function getLinkmp3() {
+        setLinkMp3(await services.getSong({ encodeId: song.encodeId }));
+      }
+      getLinkmp3();
+    }
+  }, [isShow]);
   return (
     <Popper content={"Khác"}>
       <Headless
@@ -31,14 +39,10 @@ function SongPopper({ song, style }) {
               </div>
             </div>
             <div className={cx("control")}>
-              <button
-                href={urlMedia.audio(song.encodeId)}
-                download={"helo"}
-                type="audio/mpeg"
-              >
+              <a href={linkmp3 && linkmp3["128"]} download type="audio/mpeg">
                 <span className="material-symbols-outlined">download</span>
                 <h6>Tải xuống</h6>
-              </button>
+              </a>
               <button>
                 <span className="material-symbols-outlined">lyrics</span>
                 <h6>Lời bài hát</h6>
