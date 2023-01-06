@@ -121,6 +121,11 @@ function Control({ globalState, dispatch, style, showDetailPlayer }) {
         }
       }
     };
+    return () => {
+      document.documentElement.onkeydown = function (e) {
+        return;
+      };
+    };
   }, []);
 
   function nomalizeTime(time) {

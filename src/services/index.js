@@ -159,6 +159,30 @@ function getVideo(body) {
     },
   }).then((data) => data.data);
 }
+function uploadimage(file) {
+  let url = domainbe.api("/uploadImage");
+  let bodyFormData = new FormData();
+  bodyFormData.append("image", file);
+  return axios({
+    method: "post",
+    url: url,
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    data: bodyFormData,
+  }).then((data) => data.data);
+}
+function updateUser(body) {
+  let url = domainbe.api("/updateUser");
+  return axios({
+    method: "post",
+    url: url,
+    data: {
+      id: body.id,
+      avatar: body.avatar,
+    },
+  }).then((data) => data.data);
+}
 export default {
   signin,
   login,
@@ -176,4 +200,6 @@ export default {
   getListMV,
   getCategoryMV,
   getVideo,
+  uploadimage,
+  updateUser,
 };

@@ -164,6 +164,11 @@ function GlobalState({ children }) {
           ...state,
           artistName: action.payload.artistName,
         };
+      case "avatar":
+        newState = {
+          ...state,
+          user: { ...state.user, avatar: action.payload.avatar },
+        };
         break;
     }
     LocalStorage.set("coppermp3", newState);

@@ -1,14 +1,43 @@
 .wrapper {
   display: flex;
   align-items: center;
-  span {
-    font-size: 12px;
-    color: var(--textcl);
-    margin-right: 12px;
-    opacity: 0.5;
-  }
+
   img {
-    border-radius: 50%;
+    border-radius: 500px;
     width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+}
+.popper {
+  background-color: rgb(31, 31, 70);
+  border-radius: 8px;
+  overflow: hidden;
+  input {
+    display: none;
+  }
+  .fullName {
+    font-size: 14px;
+    text-align: center;
+    padding: 8px;
+    color: yellow;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+  }
+  .option {
+    display: grid;
+    display: flex;
+    align-items: center;
+    padding: 0px 16px;
+    span {
+      padding: 8px;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      p,
+      span {
+        color: yellow;
+      }
+    }
   }
 }
