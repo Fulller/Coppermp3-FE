@@ -12,8 +12,8 @@ function Sidebar() {
     {
       icon: <span className="material-symbols-outlined">library_music</span>,
       title: "Cá Nhân",
-      id: "home",
-      link: "/discovery",
+      id: "personal",
+      link: "/personal",
     },
     {
       icon: <span className="material-symbols-outlined">album</span>,

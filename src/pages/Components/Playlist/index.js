@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import AllBtn from "../AllBtn";
 import MVicon from "../../../Component/MVicon";
 import LinkArtistName from "../../../Component/LinkArtistName";
+import LocalStorage from "../../../tools/localStorage";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
@@ -27,12 +28,27 @@ function Playlist({ data, maxItem = 4, allBtnHandle, hasAllBtn = false }) {
             <div
               key={index}
               className={cx("playlist-item")}
-              onClick={() =>
+              onClick={() => {
+                let historyPlaylist = LocalStorage.get(
+                  "historyPlaylistcmp3",
+                  []
+                );
+                if (
+                  !historyPlaylist.some((pl) => {
+                    return pl.encodeId == playlist.encodeId;
+                  })
+                ) {
+                  if (historyPlaylist.length >= 50) {
+                    historyPlaylist.pop();
+                  }
+                  historyPlaylist.unshift(playlist);
+                  LocalStorage.set("historyPlaylistcmp3", historyPlaylist);
+                }
                 dispatch({
                   type: "playlistEncodeId",
                   payload: { playlistEncodeId: playlist.encodeId },
-                })
-              }
+                });
+              }}
             >
               <Link to="/playlist">
                 <div className={cx("content")}>

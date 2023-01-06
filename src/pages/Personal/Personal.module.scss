@@ -1,0 +1,22 @@
+.wrapper {
+  h3 {
+    display: none !important;
+  }
+  .options {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-bottom: -20px;
+    .option {
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 800;
+      transition: all 0.3s;
+    }
+    .active {
+      background-color: black;
+    }
+  }
+}

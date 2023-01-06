@@ -101,6 +101,18 @@ function GlobalState({ children }) {
             }
           }
         }
+        let historySong = LocalStorage.get("historySongcmp3", []);
+        if (
+          !historySong.some((song) => {
+            return song.encodeId == action.payload.currentSong.encodeId;
+          })
+        ) {
+          if (historySong.length >= 50) {
+            historySong.pop();
+          }
+          historySong.unshift(action.payload.currentSong);
+          LocalStorage.set("historySongcmp3", historySong);
+        }
         newState = {
           ...state,
           currentSong: action.payload.currentSong,

@@ -13,7 +13,13 @@ import LinkArtistName from "../../../Component/LinkArtistName";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
-function Songs({ data, maxItem, column = 2, allBtnHandle, hasAllBtn = false }) {
+function Songs({
+  data,
+  maxItem = 8,
+  column = 2,
+  allBtnHandle,
+  hasAllBtn = false,
+}) {
   let [globalState, dispatch] = useContext(GlobalContext);
 
   return (

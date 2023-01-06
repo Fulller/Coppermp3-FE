@@ -8,6 +8,7 @@ import WeekChart from "../pages/WeekChart";
 import NewReleaseChart from "../pages/NewReleaseChart";
 import Artist from "../pages/Artist";
 import Top100 from "../pages/Top100";
+import Personal from "../pages/Personal";
 
 import Mainlayout from "../layouts/Mainlayout";
 let publicRoute = [
@@ -26,5 +27,6 @@ let publicRoute = [
   },
   { path: "/artist", element: Artist, layout: Mainlayout },
   { path: "/top100", element: Top100, layout: Mainlayout },
+  { path: "/personal", element: Personal, layout: Mainlayout },
 ];
 export { publicRoute };
