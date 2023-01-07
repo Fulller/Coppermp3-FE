@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Coppermp3-FE/static/css/main.33b8513e.css",
+    "main.js": "/Coppermp3-FE/static/js/main.25bb4a3b.js",
+    "static/js/787.cda612ba.chunk.js": "/Coppermp3-FE/static/js/787.cda612ba.chunk.js",
+    "index.html": "/Coppermp3-FE/index.html",
+    "main.33b8513e.css.map": "/Coppermp3-FE/static/css/main.33b8513e.css.map",
+    "main.25bb4a3b.js.map": "/Coppermp3-FE/static/js/main.25bb4a3b.js.map",
+    "787.cda612ba.chunk.js.map": "/Coppermp3-FE/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.33b8513e.css",
+    "static/js/main.25bb4a3b.js"
+  ]
+}
