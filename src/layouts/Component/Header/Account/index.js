@@ -31,7 +31,7 @@ function Account() {
               changeAvatar(e.target.files[0]);
             }}
           ></input>
-          <label for="avatarInput" className={cx("option")}>
+          <label htmlFor="avatarInput" className={cx("option")}>
             <span className="material-symbols-outlined">account_circle</span>
             <p>Cập nhật avatar</p>
           </label>
@@ -54,7 +54,6 @@ function Account() {
       onClickOutside={() => {
         setIsShow(false);
       }}
-      hideOnClick
     >
       <div
         className={cx("wrapper")}

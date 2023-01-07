@@ -164,6 +164,7 @@ function GlobalState({ children }) {
           ...state,
           artistName: action.payload.artistName,
         };
+        break;
       case "avatar":
         newState = {
           ...state,

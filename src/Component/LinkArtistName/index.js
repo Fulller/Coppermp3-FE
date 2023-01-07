@@ -28,6 +28,7 @@ function LinkArtistName({ data, fontSize = 12, style = {} }) {
                 });
               }}
               className={cx("item")}
+              key={index}
             >
               {space + artist.name}
             </Link>
