@@ -1,4 +1,4 @@
-let domain = "http://localhost:3001";
+let domain = "https://zingmp3-fpci.onrender.com";
 export default {
   image: function (url) {
     return domain + "/images" + url;
