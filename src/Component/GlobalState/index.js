@@ -1,7 +1,6 @@
 import { createContext, useReducer, useRef, useEffect } from "react";
 import LocalStorage from "../../tools/localStorage";
 import urlMedia from "../../tools/urlMedia";
-import domainfe from "../../tools/domainfe";
 import MVview from "../MVview";
 
 let GlobalContext = createContext();
@@ -178,11 +177,11 @@ function GlobalState({ children }) {
   let [globalState, dispatch] = useReducer(globalReducer, globalInitState);
   useEffect(() => {
     if (!LocalStorage.get("isLogincmp3", false)) {
-      if (window.location.href != domainfe.page("/login")) {
+      if (!window.location.href.endsWith("/login")) {
         window.location.href = `/login`;
       }
     } else {
-      if (window.location.href == domainfe.page("/login")) {
+      if (window.location.href.endsWith("/login")) {
         window.location.href = `/${globalState.pageId}`;
       }
     }
