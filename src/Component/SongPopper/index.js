@@ -7,7 +7,6 @@ import urlMedia from "../../tools/urlMedia";
 import services from "../../services";
 
 import Headless from "@tippyjs/react/headless";
-import Tippy from "@tippyjs/react";
 import Popper from "../Popper";
 
 let cx = classNames.bind(style);
@@ -39,7 +38,11 @@ function SongPopper({ song, style }) {
               </div>
             </div>
             <div className={cx("control")}>
-              <a href={linkmp3 && linkmp3["128"]} download type="audio/mpeg">
+              <a
+                href={urlMedia.audio(song.encodeId)}
+                download
+                type="audio/mpeg"
+              >
                 <span className="material-symbols-outlined">download</span>
                 <h6>Tải xuống</h6>
               </a>

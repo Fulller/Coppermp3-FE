@@ -6,6 +6,7 @@ import Playlist from "./Component/Playlist";
 import LocalStorage from "../../../../../tools/localStorage";
 import { async } from "q";
 import services from "../../../../../services";
+import Popper from "../../../../../Component/Popper";
 
 let cx = classNames.bind(style);
 function Detailplayer({
@@ -50,20 +51,22 @@ function Detailplayer({
             </div>
           </div>
           <div className={cx("container")}>
-            <button
-              className={cx("hideBtn")}
-              onClick={(e) => {
-                detailPlayerRef.current.className = cx([
-                  "active",
-                  "hideDetailPlayer",
-                ]);
-                setTimeout(() => {
-                  setShowDetailPlayer(false);
-                }, 300);
-              }}
-            >
-              <span className="material-symbols-outlined">expand_more</span>
-            </button>
+            <Popper content="Đóng">
+              <button
+                className={cx("hideBtn")}
+                onClick={(e) => {
+                  detailPlayerRef.current.className = cx([
+                    "active",
+                    "hideDetailPlayer",
+                  ]);
+                  setTimeout(() => {
+                    setShowDetailPlayer(false);
+                  }, 300);
+                }}
+              >
+                <span className="material-symbols-outlined">expand_more</span>
+              </button>
+            </Popper>
             {optional == "playlist" ? <Playlist></Playlist> : <></>}
             {optional == "lyric" ? <Lyric lyric={lyric}></Lyric> : <></>}
           </div>

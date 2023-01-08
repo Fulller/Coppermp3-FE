@@ -64,7 +64,9 @@ function Songs({
                 playList={data.items}
               ></Thumbnail>
               <div className={cx("info")}>
-                <h5>{song.title}</h5>
+                <h5 className={cx([column == 2 && "titlecl2"])}>
+                  {song.title}
+                </h5>
                 <LinkArtistName data={song.artists}></LinkArtistName>
               </div>
               <div className={cx("right")}>

@@ -5,7 +5,7 @@
   .options {
     display: flex;
     background-color: rgba(255, 255, 255, 0.2);
-    padding: 8px;
+    padding: 4px;
     border-radius: 50px;
     margin-top: 10px;
     margin-bottom: -20px;
@@ -16,7 +16,7 @@
       transition: all 0.3s;
     }
     .active {
-      background-color: black;
+      background-color: rgba(0, 0, 0, 0.5);
     }
   }
 }

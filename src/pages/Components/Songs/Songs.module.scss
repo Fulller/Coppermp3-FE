@@ -39,6 +39,14 @@
           color: rgba(255, 255, 255, 0.612);
           font-weight: 400;
         }
+        .titlecl2 {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 1;
+          max-width: 240px;
+          overflow: hidden;
+        }
       }
       .right {
         flex: 1;

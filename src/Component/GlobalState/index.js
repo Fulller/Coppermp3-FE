@@ -187,6 +187,12 @@ function GlobalState({ children }) {
     }
     dispatch({ type: "isPlay", payload: { isPlay: false } });
   }, []);
+  useEffect(() => {
+    window.onerror = function (errorMsg, url, lineNumber) {
+      console.log(errorMsg, url, lineNumber);
+      return false;
+    };
+  }, []);
 
   return (
     <GlobalContext.Provider value={[globalState, dispatch]}>

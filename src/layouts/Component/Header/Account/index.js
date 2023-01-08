@@ -61,7 +61,12 @@ function Account() {
           setIsShow(!isShow);
         }}
       >
-        <img src={globalState.user.avatar}></img>
+        <img
+          src={globalState.user.avatar}
+          onError={(e) => {
+            e.target.src = domainbe.image("/defaultAvatar.jpg");
+          }}
+        ></img>
       </div>
     </Headless>
   );
