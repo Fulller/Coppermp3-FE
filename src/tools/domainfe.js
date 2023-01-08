@@ -1,4 +1,4 @@
-let domain = "http://localhost:3000";
+let domain = "https://coppermp3-fe.vercel.app";
 export default {
   page: function (url) {
     return domain + url;
