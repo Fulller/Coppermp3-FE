@@ -76,6 +76,7 @@
       background-color: var(--solidcl);
       transition: all 0.2s;
       &:hover {
+        background-color: white;
         color: black;
       }
       &:active {
@@ -93,6 +94,33 @@
       width: 100%;
       margin-top: 12px;
       text-align: start;
+    }
+    .button-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      background-color: white;
+      padding: 12px;
+      margin-top: 12px;
+      border-radius: 12px;
+      background-color: var(--solidcl);
+      img {
+        width: 40;
+        height: 40px;
+      }
+      h3 {
+        margin-right: 12px;
+        font-size: 20px;
+        font-weight: 800;
+      }
+      &:hover {
+        background-color: white;
+
+        h3 {
+          color: black;
+        }
+      }
     }
   }
   .logorotate {

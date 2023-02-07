@@ -6,6 +6,7 @@ import domainbe from "../../tools/domainbe";
 import services from "../../services";
 import { GlobalContext } from "../../Component/GlobalState";
 import LocalStorage from "../../tools/localStorage";
+import ButtonSocial from "./ButtonSocial";
 
 let cx = classNames.bind(style);
 function Login() {
@@ -87,6 +88,20 @@ function Login() {
         </div>
         <h2 ref={messageRef}>Error</h2>
         <button onClick={submitForm}>Log in</button>
+        <ButtonSocial
+          data={{
+            title: "Login with Google",
+            link: "http://localhost:5002/auth/google",
+            icon: "https://cdn-icons-png.flaticon.com/512/2991/2991148.png",
+          }}
+        ></ButtonSocial>
+        <ButtonSocial
+          data={{
+            title: "Login with Github",
+            link: "http://localhost:5002/auth/github",
+            icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
+          }}
+        ></ButtonSocial>
         <footer>
           <Link to="/signin">Sign in</Link>
         </footer>
