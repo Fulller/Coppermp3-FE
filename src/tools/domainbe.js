@@ -6,4 +6,7 @@ export default {
   api: function (url) {
     return domain + "/api" + url;
   },
+  origin: function (url) {
+    return domain + url;
+  },
 };

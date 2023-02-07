@@ -91,14 +91,14 @@ function Login() {
         <ButtonSocial
           data={{
             title: "Login with Google",
-            link: "http://localhost:5002/auth/google",
+            link: domainbe.origin("/auth/google"),
             icon: "https://cdn-icons-png.flaticon.com/512/2991/2991148.png",
           }}
         ></ButtonSocial>
         <ButtonSocial
           data={{
             title: "Login with Github",
-            link: "http://localhost:5002/auth/github",
+            link: domainbe.origin("/auth/github"),
             icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
           }}
         ></ButtonSocial>
