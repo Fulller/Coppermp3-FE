@@ -88,7 +88,7 @@ function Login() {
         </div>
         <h2 ref={messageRef}>Error</h2>
         <button onClick={submitForm}>Log in</button>
-        <ButtonSocial
+        {/* <ButtonSocial
           data={{
             title: "Login with Google",
             link: domainbe.origin("/auth/google"),
@@ -101,7 +101,7 @@ function Login() {
             link: domainbe.origin("/auth/github"),
             icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
           }}
-        ></ButtonSocial>
+        ></ButtonSocial> */}
         <footer>
           <Link to="/signin">Sign in</Link>
         </footer>
