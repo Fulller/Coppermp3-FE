@@ -175,18 +175,18 @@ function GlobalState({ children }) {
     return { ...newState };
   }
   let [globalState, dispatch] = useReducer(globalReducer, globalInitState);
-  useEffect(() => {
-    if (!LocalStorage.get("isLogincmp3", false)) {
-      if (!window.location.href.endsWith("/login")) {
-        window.location.href = `/login`;
-      }
-    } else {
-      if (window.location.href.endsWith("/login")) {
-        window.location.href = `/${globalState.pageId}`;
-      }
-    }
-    dispatch({ type: "isPlay", payload: { isPlay: false } });
-  }, []);
+  // useEffect(() => {
+  //   if (!LocalStorage.get("isLogincmp3", false)) {
+  //     if (!window.location.href.endsWith("/login")) {
+  //       window.location.href = `/login`;
+  //     }
+  //   } else {
+  //     if (window.location.href.endsWith("/login")) {
+  //       window.location.href = `/${globalState.pageId}`;
+  //     }
+  //   }
+  //   dispatch({ type: "isPlay", payload: { isPlay: false } });
+  // }, []);
   useEffect(() => {
     window.onerror = function (errorMsg, url, lineNumber) {
       console.log(errorMsg, url, lineNumber);

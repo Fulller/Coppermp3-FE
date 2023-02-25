@@ -8,7 +8,7 @@ function Header() {
   return (
     <div className={cx("wrapper")}>
       <SearchBox></SearchBox>
-      <Account></Account>
+      {/* <Account></Account> */}
     </div>
   );
 }
