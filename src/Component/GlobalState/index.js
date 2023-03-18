@@ -1,10 +1,14 @@
 import { createContext, useReducer, useRef, useEffect } from "react";
+import services from "../../services";
 import LocalStorage from "../../tools/localStorage";
 import urlMedia from "../../tools/urlMedia";
 import MVview from "../MVview";
+import { useDispatch } from "react-redux";
+import dataSlide from "../../redux/slides/data";
 
 let GlobalContext = createContext();
 function GlobalState({ children }) {
+  let dispatchRedux = useDispatch();
   let globalInitState = LocalStorage.get("coppermp3", {
     user: {},
     pageId: "discovery",
@@ -175,23 +179,34 @@ function GlobalState({ children }) {
     return { ...newState };
   }
   let [globalState, dispatch] = useReducer(globalReducer, globalInitState);
-  useEffect(() => {
-    if (!LocalStorage.get("isLogincmp3", false)) {
-      if (!window.location.href.endsWith("/login")) {
-        window.location.href = `/login`;
-      }
-    } else {
-      if (window.location.href.endsWith("/login")) {
-        window.location.href = `/${globalState.pageId}`;
-      }
-    }
-    dispatch({ type: "isPlay", payload: { isPlay: false } });
-  }, []);
+  // useEffect(() => {
+  //   if (!LocalStorage.get("isLogincmp3", false)) {
+  //     if (!window.location.href.endsWith("/login")) {
+  //       window.location.href = `/login`;
+  //     }
+  //   } else {
+  //     if (window.location.href.endsWith("/login")) {
+  //       window.location.href = `/${globalState.pageId}`;
+  //     }
+  //   }
+  //   dispatch({ type: "isPlay", payload: { isPlay: false } });
+  // }, []);
   useEffect(() => {
     window.onerror = function (errorMsg, url, lineNumber) {
       console.log(errorMsg, url, lineNumber);
       return false;
     };
+  }, []);
+
+  useEffect(() => {
+    (async function () {
+      let discoveryData = await services.getHome();
+      let zingchartData = await services.getChartHome();
+      let top1000Date = await services.getTop100();
+      dispatchRedux(dataSlide.actions.setDiscovery(discoveryData.items));
+      dispatchRedux(dataSlide.actions.setZingchart(zingchartData));
+      dispatchRedux(dataSlide.actions.setTop100(top1000Date));
+    })();
   }, []);
 
   return (

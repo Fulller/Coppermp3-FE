@@ -8,12 +8,14 @@ import style from "./Top100.module.scss";
 import LocalStorage from "../../tools/localStorage";
 import cpnStyle from "../Components/Components.module.scss";
 import Loading from "../Components/Loading";
+import { useSelector } from "react-redux";
+import selector from "../../redux/selector";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
 function Top100() {
   let [globalState, dispatch] = useContext(GlobalContext);
-  let [data, setData] = useState(null);
+  let data = useSelector(selector.top100);
   useEffect(() => {
     if (globalState.pageId != "top100") {
       dispatch({
@@ -21,10 +23,6 @@ function Top100() {
         payload: { pageId: "top100" },
       });
     }
-    async function fetchData() {
-      setData(await services.getTop100());
-    }
-    fetchData();
   }, []);
 
   function Sections() {
