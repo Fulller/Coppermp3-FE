@@ -6,11 +6,13 @@ import { useEffect, useState } from "react";
 import LocalStorage from "../../tools/localStorage";
 import Char from "../Components/Char";
 import Loading from "../Components/Loading";
+import { useSelector } from "react-redux";
+import selector from "../../redux/selector";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
 function WeekChart() {
-  let [data, setData] = useState(null);
+  let data = useSelector(selector.zingchart);
   let [areaOption, setAreaOption] = useState(
     LocalStorage.get("WeekChartAreacmp3", "vn")
   );
@@ -19,12 +21,7 @@ function WeekChart() {
     { title: "US-UK", id: "us" },
     { title: "K-POP", id: "korea" },
   ];
-  useEffect(() => {
-    async function getData() {
-      setData(await services.getChartHome());
-    }
-    getData();
-  }, []);
+
   return (
     <>
       {data ? (

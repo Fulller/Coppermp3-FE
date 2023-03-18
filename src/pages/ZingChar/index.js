@@ -6,10 +6,12 @@ import Char from "../Components/Char";
 import WeekChart from "../Components/WeekChart";
 import { GlobalContext } from "../../Component/GlobalState";
 import Loading from "../Components/Loading";
+import { useSelector } from "react-redux";
+import selector from "../../redux/selector";
 
 let cxCpn = classNames.bind(cpnStyle);
 function ZingChar() {
-  let [data, setData] = useState(null);
+  let data = useSelector(selector.zingchart);
   let [globalState, dispatch] = useContext(GlobalContext);
   useEffect(() => {
     if (globalState.pageId != "zingchart") {
@@ -18,10 +20,6 @@ function ZingChar() {
         payload: { pageId: "zingchart" },
       });
     }
-    async function getData() {
-      setData(await services.getChartHome());
-    }
-    getData();
   }, []);
   return (
     <>

@@ -7,11 +7,13 @@ import LocalStorage from "../../tools/localStorage";
 import Char from "../Components/Char";
 import { GlobalContext } from "../../Component/GlobalState";
 import Loading from "../Components/Loading";
+import { useSelector } from "react-redux";
+import selector from "../../redux/selector";
 
 let cx = classNames.bind(style);
 let cxCpn = classNames.bind(cpnStyle);
 function NewReleaseChart() {
-  let [data, setData] = useState(null);
+  let data = useSelector(selector.zingchart);
   let [globalState, dispatch] = useContext(GlobalContext);
   useEffect(() => {
     if (globalState.pageId != "newReleaseChart") {
@@ -20,10 +22,6 @@ function NewReleaseChart() {
         payload: { pageId: "newReleaseChart" },
       });
     }
-    async function getData() {
-      setData(await services.getChartHome());
-    }
-    getData();
   }, []);
 
   return (

@@ -13,11 +13,13 @@ import {
   WeekChartBanner,
 } from "../Components";
 import { GlobalContext } from "../../Component/GlobalState";
+import { useSelector } from "react-redux";
+import selector from "../../redux/selector";
 
 import cpnStyle from "../Components/Components.module.scss";
 let cxCpn = classNames.bind(cpnStyle);
 function Discovery() {
-  let [dataDiscovery, setDataDiscovery] = useState(null);
+  let dataDiscovery = useSelector(selector.discovery);
   let [globalState, dispatch] = useContext(GlobalContext);
   useEffect(() => {
     if (globalState.pageId != "discovery") {
@@ -26,11 +28,6 @@ function Discovery() {
         payload: { pageId: "discovery" },
       });
     }
-    async function fetchData() {
-      let newDataHome = await services.getHome();
-      setDataDiscovery(newDataHome.items);
-    }
-    fetchData();
   }, []);
   function DiscoveryView() {
     if (Object.keys(dataDiscovery).length > 0) {
