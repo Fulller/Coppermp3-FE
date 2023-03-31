@@ -1,5 +1,5 @@
-let domain = "https://zingmp3-fpci.onrender.com";
-// let domain = "http://localhost:3001";
+// let domain = "https://zingmp3-fpci.onrender.com";
+let domain = process.env.REACT_APP_SERVERURL;
 
 export default {
   image: function (url) {
