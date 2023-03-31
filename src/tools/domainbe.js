@@ -6,7 +6,7 @@ export default {
     return domain + "/images" + url;
   },
   api: function (url) {
-    return domain + "/api" + url;
+    return domain + "/api/v2" + url;
   },
   origin: function (url) {
     return domain + url;
