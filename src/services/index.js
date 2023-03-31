@@ -38,7 +38,7 @@ function getDetailPlaylist(body) {
   return axios({
     method: "get",
     url: url,
-    data: {
+    params: {
       encodeId: body.encodeId,
     },
   }).then((data) => data.data);
@@ -48,7 +48,7 @@ function getHome(body) {
   return axios({
     method: "get",
     url: url,
-    data: {},
+    params: {},
   }).then((data) => data.data);
 }
 function getTop100(body) {
@@ -56,7 +56,7 @@ function getTop100(body) {
   return axios({
     method: "get",
     url: url,
-    data: {},
+    params: {},
   }).then((data) => data.data);
 }
 function getChartHome(body) {
@@ -64,7 +64,7 @@ function getChartHome(body) {
   return axios({
     method: "get",
     url: url,
-    data: {},
+    params: {},
   }).then((data) => data.data);
 }
 function getNewReleaseChart(body) {
@@ -72,7 +72,7 @@ function getNewReleaseChart(body) {
   return axios({
     method: "get",
     url: url,
-    data: {},
+    params: {},
   }).then((data) => data.data);
 }
 function getInfoSong(body) {
@@ -80,7 +80,7 @@ function getInfoSong(body) {
   return axios({
     method: "get",
     url: url,
-    data: {
+    params: {
       encodeId: body.encodeId,
     },
   }).then((data) => data.data);
@@ -90,7 +90,7 @@ function getArtist(body) {
   return axios({
     method: "get",
     url: url,
-    data: {
+    params: {
       name: body.name,
     },
   }).then((data) => data.data);
@@ -100,7 +100,7 @@ function getListArtistSong(body) {
   return axios({
     method: "get",
     url: url,
-    data: {
+    params: {
       encodeId: body.encodeId,
       page: body.page,
       count: body.count,
@@ -112,7 +112,7 @@ function getLyric(body) {
   return axios({
     method: "get",
     url: url,
-    data: {
+    params: {
       encodeId: body.encodeId,
     },
   }).then((data) => data.data);
@@ -122,7 +122,7 @@ function search(body) {
   return axios({
     method: "get",
     url: url,
-    data: {
+    params: {
       query: body.query,
     },
   }).then((data) => data.data);
@@ -132,7 +132,7 @@ function getListMV(body) {
   return axios({
     method: "get",
     url: url,
-    data: {
+    params: {
       encodeId: body.encodeId,
       page: body.page,
       count: body.count,
@@ -144,7 +144,7 @@ function getCategoryMV(body) {
   return axios({
     method: "get",
     url: url,
-    data: {
+    params: {
       encodeId: body.encodeId,
     },
   }).then((data) => data.data);
@@ -154,7 +154,7 @@ function getVideo(body) {
   return axios({
     method: "get",
     url: url,
-    data: {
+    params: {
       encodeId: body.encodeId,
     },
   }).then((data) => data.data);
